@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
+import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
 import pamudithanavaratna.com.styleomega.Activities.Sign_In;
 
@@ -34,16 +38,29 @@ public class SignInFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_sign_in, container, false);
 
-        EditText email = v.findViewById(R.id.emailSignIn);
-        EditText password = v.findViewById(R.id.passwordSignIn);
+        final EditText email = v.findViewById(R.id.emailSignIn);
+        final EditText password = v.findViewById(R.id.passwordSignIn);
 
         //Sign in Button
         SignInBtn = v.findViewById(R.id.SignInBtn);
         SignInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),MainPage.class));
-                getActivity().finish();
+
+                String emailcheck= email.getText().toString();
+                String passwordcheck = password.getText().toString();
+//test line
+                List<User> userList = User.findWithQuery(User.class, "Select * from User where email="+ emailcheck + " and password="+ passwordcheck);
+
+                if(userList!=null) {
+
+                    startActivity(new Intent(getActivity(), MainPage.class));
+                    getActivity().finish();
+                }
+                else{
+
+                    Toast.makeText(getContext(),"Login failed",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
