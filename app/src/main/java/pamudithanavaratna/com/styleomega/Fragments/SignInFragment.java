@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.R;
@@ -32,6 +33,9 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_sign_in, container, false);
+
+        EditText email = v.findViewById(R.id.emailSignIn);
+        EditText password = v.findViewById(R.id.passwordSignIn);
 
         //Sign in Button
         SignInBtn = v.findViewById(R.id.SignInBtn);
