@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import java.io.Serializable;
 
+import pamudithanavaratna.com.styleomega.Database.Login;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
 import pamudithanavaratna.com.styleomega.Activities.Sign_In;
@@ -50,6 +51,8 @@ public class RegisterFragment extends Fragment {
                         Integer.parseInt( mobilenumber.getText().toString()),password.getText().toString());
 
                 user.save();
+
+                Login userlogin = new Login(email.getText().toString(), password.getText().toString());
 
                 Bundle userbundle = new Bundle();
                 userbundle.putSerializable("newuser", user);
