@@ -53,6 +53,7 @@ public class RegisterFragment extends Fragment {
                 user.save();
 
                 Login userlogin = new Login(email.getText().toString(), password.getText().toString());
+                userlogin.save();
 
                 Bundle userbundle = new Bundle();
                 userbundle.putSerializable("newuser", user);

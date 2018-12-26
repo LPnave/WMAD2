@@ -108,7 +108,8 @@ public class  MainPage extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
             startActivity( new Intent( MainPage.this,Profile.class));
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.logout) {
+            startActivity(new Intent(MainPage.this, Sign_In.class));
 
         } else if (id == R.id.nav_slideshow) {
 

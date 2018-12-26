@@ -15,4 +15,12 @@ public class Login extends SugarRecord {
         this.useremail = useremail;
         this.password = password;
     }
+
+    public String getUseremail() {
+        return useremail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
