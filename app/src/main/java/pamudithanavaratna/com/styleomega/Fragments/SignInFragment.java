@@ -58,7 +58,7 @@ public class SignInFragment extends Fragment {
                     List<Login> userlog = Login.listAll(Login.class);
 
                     for(Login l : userlog){
-                        if(l.getUseremail()== emailcheck && l.getPassword()==passwordcheck){
+                        if(l.getUseremail().equals(emailcheck)&& l.getPassword().equals(passwordcheck)){
                             startActivity(new Intent(getActivity(), MainPage.class));
                             getActivity().finish();
 
