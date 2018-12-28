@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 
@@ -18,8 +19,6 @@ import pamudithanavaratna.com.styleomega.R;
  * A simple {@link Fragment} subclass.
  */
 public class tab1 extends Fragment {
-
-    private Button categoryBtnW;
 
     GridView gview;
 
@@ -58,6 +57,14 @@ public class tab1 extends Fragment {
         gview = (GridView) v.findViewById(R.id.gridview);
         GridAdapter gridAdapter = new GridAdapter(getActivity(),categories,images);
         gview.setAdapter(gridAdapter);
+
+        gview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                MainPage.fragmentManager.beginTransaction().add(R.id.MainContainer,
+                        new ItemsPageFragment(), null).addToBackStack("mainPageW").commit();
+            }
+        });
 
         return v;
     }
