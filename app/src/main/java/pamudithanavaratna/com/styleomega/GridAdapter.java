@@ -34,7 +34,13 @@ public class GridAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
+
         return 0;
+    }
+
+    public String getItemName(int i){
+       return values[i];
+
     }
 
     @Override

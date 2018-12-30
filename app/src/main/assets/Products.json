@@ -1,0 +1,60 @@
+{
+  "allproducts":[
+      {
+        "Id": 1,
+        "Name": "Whistles Limited chunky cable knit jumper",
+        "Catagory": "WomenTops",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/whistles-limited-chunky-cable-knit-jumper/11354710-1-green?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      },
+      {
+        "Id": 2,
+        "Name": "Vila button through waist detail blouses",
+        "Catagory": "WomenTops",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/vila-button-through-waist-detail-blouse/11356038-1-green?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      },
+      {
+        "Id": 3,
+        "Name": "ASOS DESIGN high waisted pencil skirt",
+        "Catagory": "WomenBottoms",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/asos-design-high-waisted-pencil-skirt/10864987-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      },
+      {
+        "Id": 4,
+        "Name": "ASOS DESIGN full length flare in wine velvet",
+        "Catagory": "WomenBottoms",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/asos-design-full-length-flare-in-wine-velvet/10887221-1-winecord?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      },
+      {
+        "Id": 5,
+        "Name": "ASOS DESIGN Ring And Ball Cross Body Bag With Chain Strap",
+        "Catagory": "WomenAccessories",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/asos-design-ring-and-ball-cross-body-bag-with-chain-strap/10975543-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      },
+      {
+        "Id": 6,
+        "Name": "ASOS DESIGN vintage tan jeans belt",
+        "Catagory": "WomenAccessories",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/asos-design-vintage-tan-jeans-belt/8986448-1-brown?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      },
+      {
+        "Id": 7,
+        "Name": "adidas Originals Gazelle trainers in black suede",
+        "Catagory": "WomenFootwear",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/adidas-originals-gazelle-trainers-in-black-suede/6786894-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      },
+      {
+        "Id": 8,
+        "Name": "ASOS DESIGN Lifetime pointed ballet flats",
+        "Catagory": "WomenFootwear",
+        "Price": 100,
+        "Image": "https://images.asos-media.com/products/asos-design-lifetime-pointed-ballet-flats/10865734-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
+      }
+    ]
+}

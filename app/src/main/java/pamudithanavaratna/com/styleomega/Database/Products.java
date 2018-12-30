@@ -5,19 +5,66 @@ import com.orm.SugarRecord;
 import java.sql.Blob;
 
 public class Products extends SugarRecord {
-    String productId;
+    int productId;
     String productName;
-    float Amount;
-    Blob piture;
+    String category;
+    float price;
+    String picture;
 
     public Products() {
 
     }
 
-    public Products(String productId, String productName, float amount, Blob piture) {
+    public Products(int productId, String productName, String category, float price, String picture) {
         this.productId = productId;
         this.productName = productName;
-        Amount = amount;
-        this.piture = piture;
+        this.category = category;
+        this.price = price;
+        this.picture = picture;
+    }
+
+    public Products(String productName, String picture) {
+        this.productName = productName;
+        this.picture = picture;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

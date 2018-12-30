@@ -55,12 +55,19 @@ public class tab1 extends Fragment {
         });*/
 
         gview = (GridView) v.findViewById(R.id.gridview);
-        GridAdapter gridAdapter = new GridAdapter(getActivity(),categories,images);
+        final GridAdapter gridAdapter = new GridAdapter(getActivity(),categories,images);
         gview.setAdapter(gridAdapter);
 
         gview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String category = gridAdapter.getItemName(i);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("category", category);
+
+
                 MainPage.fragmentManager.beginTransaction().add(R.id.MainContainer,
                         new ItemsPageFragment(), null).addToBackStack("mainPageW").commit();
             }
