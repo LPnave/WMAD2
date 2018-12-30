@@ -40,7 +40,7 @@ public class AddressFragment extends Fragment {
         final EditText postalcode = v.findViewById(R.id.editTextPostalCode);
 
         Bundle bundle = new Bundle();
-        final User user = (User) bundle.getSerializable("newuser");
+        final User user = (User) getArguments().getSerializable("newuser");
 
 
        AddressBtn= v.findViewById(R.id.AddressNextBtn);

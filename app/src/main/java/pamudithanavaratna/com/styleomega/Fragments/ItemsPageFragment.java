@@ -2,6 +2,7 @@ package pamudithanavaratna.com.styleomega.Fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +39,65 @@ public class ItemsPageFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        productsarray = new ArrayList<>();
+
+        JSONObject json  = null;
+        try {
+
+            Bundle bundle = new Bundle();
+            json = new JSONObject(loadJSON("Products.json"));
+
+            String gender = (String) getArguments().getSerializable("gender");
+            String category = (String) getArguments().getSerializable("category");
+            String key = gender+category;
+
+            if(gender.equals("Women")) {
+
+                JSONArray productlist = json.getJSONArray("womenproducts");
+
+                for (int i = 0; i < productlist.length(); i++) {
+                    JSONObject product = productlist.getJSONObject(i);
+
+                    if (key.equals(product.getString("Category"))) {
+
+                        String itemname = product.getString("Name");
+                        String itemurl = product.getString("Image");
+
+
+                        productsarray.add(new Products(itemname, itemurl));
+                    }
+                }
+            }
+            else if(gender.equals("Men")){
+                JSONArray productlist = json.getJSONArray("menproducts");
+                for (int i = 0; i < productlist.length(); i++) {
+                    JSONObject product = productlist.getJSONObject(i);
+
+                    if (key.equals(product.getString("Category"))) {
+
+                        String itemname = product.getString("Name");
+                        String itemurl = product.getString("Image");
+
+
+                        productsarray.add(new Products(itemname, itemurl));
+                    }
+                }
+            }
+            else {
+                Toast.makeText(getContext(),"ERROR",Toast.LENGTH_SHORT);
+            }
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,46 +109,15 @@ public class ItemsPageFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        productsarray = new ArrayList<>();
 
-        JSONObject json  = null;
-        try {
-            json = new JSONObject(loadJSON("Products.json"));
-            JSONArray productlist = json.getJSONArray("allproducts");
+        recyclerViewAdapter = new RecyclerViewAdapter(productsarray,getContext());
+        recyclerView.setAdapter(recyclerViewAdapter);
 
-            for(int i =0; i<productlist.length();i++){
-                JSONObject product = productlist.getJSONObject(i);
-
-                String itemname = product.getString("Name");
-                String itemurl = product.getString("Image");
-
-                productsarray.add(new Products(itemname,itemurl));
-
-            }
-
-            recyclerViewAdapter = new RecyclerViewAdapter(productsarray,getContext());
-            recyclerView.setAdapter(recyclerViewAdapter);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
         return v;
     }
 
-    public void parseJSON(JSONArray productjson){
-        JSONObject json = null;
 
-        try{
-            json = new JSONObject(loadJSON("Products.json"));
-            JSONArray productlist = json.getJSONArray("allproducts");
-        }
-        catch(JSONException e){
-            e.printStackTrace();
-        }
-
-    }
 
 
     public String loadJSON (String filename){

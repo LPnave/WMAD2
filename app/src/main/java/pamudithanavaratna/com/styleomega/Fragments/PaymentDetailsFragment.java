@@ -43,7 +43,8 @@ public class PaymentDetailsFragment extends Fragment {
         final EditText exDate = v.findViewById(R.id.editTextExpDate);
 
         Bundle bundle = new Bundle();
-        final User user = (User) bundle.getSerializable("newuser");
+        //final User user = (User) bundle.getSerializable("newuser");
+        final User user = (User) getArguments().getSerializable("newuser");
 
         completeReg= v.findViewById(R.id.buttonCompleteRegstration);
         completeReg.setOnClickListener(new View.OnClickListener() {

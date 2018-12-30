@@ -58,8 +58,11 @@ public class RegisterFragment extends Fragment {
                 Bundle userbundle = new Bundle();
                 userbundle.putSerializable("newuser", user);
 
+                AddressFragment AF = new AddressFragment();
+                AF.setArguments(userbundle);
+
                 Sign_In.fragmentManager.beginTransaction().replace(R.id.SignInFragmentContainer,
-                        new AddressFragment(),null).addToBackStack("tag2").commit();
+                        AF,null).addToBackStack("tag2").commit();
                 //startActivity(new Intent(getActivity(),MainPage.class));
                 //getActivity().finish();
 
