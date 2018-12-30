@@ -8,14 +8,14 @@ public class Products extends SugarRecord {
     int productId;
     String productName;
     String category;
-    float price;
+    String price;
     String picture;
 
     public Products() {
 
     }
 
-    public Products(int productId, String productName, String category, float price, String picture) {
+    public Products(int productId, String productName, String category, String price, String picture) {
         this.productId = productId;
         this.productName = productName;
         this.category = category;
@@ -25,6 +25,12 @@ public class Products extends SugarRecord {
 
     public Products(String productName, String picture) {
         this.productName = productName;
+        this.picture = picture;
+    }
+
+    public Products(String productName,  String picture,String price) {
+        this.productName = productName;
+        this.price = price;
         this.picture = picture;
     }
 
@@ -52,11 +58,11 @@ public class Products extends SugarRecord {
         this.category = category;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

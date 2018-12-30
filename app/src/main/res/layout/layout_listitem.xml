@@ -9,15 +9,29 @@
         android:layout_height="80dp"
         android:id="@+id/itemimage"
         android:src="@mipmap/ic_launcher"/>
+
     <TextView
+        android:id="@+id/itemname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/itemname"
-        android:text="itemname"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="20dp"
         android:layout_toRightOf="@id/itemimage"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:textSize="17sp"
-        android:textColor="#000"/>
+        android:text="itemname"
+        android:textColor="#000"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/itemprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/itemname"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:text="itemprice" />
 
 </RelativeLayout>

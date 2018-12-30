@@ -93,4 +93,10 @@ public class MainFragment extends Fragment {
             return fragmentList.size();
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 }

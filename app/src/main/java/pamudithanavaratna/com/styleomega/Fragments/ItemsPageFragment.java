@@ -48,7 +48,7 @@ public class ItemsPageFragment extends Fragment {
         JSONObject json  = null;
         try {
 
-            Bundle bundle = new Bundle();
+
             json = new JSONObject(loadJSON("Products.json"));
 
             String gender = (String) getArguments().getSerializable("gender");
@@ -66,9 +66,9 @@ public class ItemsPageFragment extends Fragment {
 
                         String itemname = product.getString("Name");
                         String itemurl = product.getString("Image");
+                        String price = product.getString("Price");
 
-
-                        productsarray.add(new Products(itemname, itemurl));
+                        productsarray.add(new Products(itemname, itemurl,price));
                     }
                 }
             }
@@ -81,9 +81,9 @@ public class ItemsPageFragment extends Fragment {
 
                         String itemname = product.getString("Name");
                         String itemurl = product.getString("Image");
+                        String price = product.getString("Price");
 
-
-                        productsarray.add(new Products(itemname, itemurl));
+                        productsarray.add(new Products(itemname, itemurl,price));
                     }
                 }
             }
@@ -112,7 +112,6 @@ public class ItemsPageFragment extends Fragment {
 
         recyclerViewAdapter = new RecyclerViewAdapter(productsarray,getContext());
         recyclerView.setAdapter(recyclerViewAdapter);
-
 
         return v;
     }

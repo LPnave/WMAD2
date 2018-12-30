@@ -75,8 +75,6 @@ public class tab1 extends Fragment {
                 ItemsPageFragment IPF = new ItemsPageFragment();
                 IPF.setArguments(bundle);
 
-                IPF.setArguments(bundle);
-
                 MainPage.fragmentManager.beginTransaction().add(R.id.MainContainer,
                         IPF, null).addToBackStack("mainPageW").commit();
             }
