@@ -28,14 +28,14 @@ public class CartFragment extends Fragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_cart,container,false);
 
-        payBtn = v.findViewById(R.id.PayBtn);
+       /* payBtn = v.findViewById(R.id.PayBtn);
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Cart.fragmentManager.beginTransaction().replace(R.id.cartFragmentContainer,
                         new PayFragment(),null).addToBackStack("cartView").commit();
             }
-        });
+        });*/
 
         return v;
     }

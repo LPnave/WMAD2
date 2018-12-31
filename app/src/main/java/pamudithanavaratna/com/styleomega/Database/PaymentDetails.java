@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class PaymentDetails extends SugarRecord {
 
-    int cardnumber;
+    String cardnumber;
     int vsc;
     Date ExpiriyDate;
     User user;
@@ -15,7 +15,7 @@ public class PaymentDetails extends SugarRecord {
 
     }
 
-    public PaymentDetails(int cardnumber, int vsc, Date expiriyDate, User user) {
+    public PaymentDetails(String cardnumber, int vsc, Date expiriyDate, User user) {
         this.cardnumber = cardnumber;
         this.vsc = vsc;
         ExpiriyDate = expiriyDate;

@@ -17,6 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +32,26 @@ public class  MainPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static FragmentManager fragmentManager;
+    String useremail;
+    String username;
 
+    public String getUseremail() {
+        return useremail;
+    }
+
+    public String getUsername() {
+        return username;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+        useremail = getIntent().getExtras().getString("useremail");
+        username = getIntent().getExtras().getString("username");
+        Bundle bundle = new Bundle();
+        bundle.putString("useremail",useremail);
 
         fragmentManager= getSupportFragmentManager();
         if(findViewById(R.id.MainContainer)!=null){
@@ -44,6 +60,7 @@ public class  MainPage extends AppCompatActivity
             }
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             MainFragment mainFragment = new MainFragment();
+            mainFragment.setArguments(bundle);
             fragmentTransaction.add(R.id.MainContainer,mainFragment);
             fragmentTransaction.commit();
 
@@ -61,6 +78,13 @@ public class  MainPage extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerview = navigationView.getHeaderView(0);
+        TextView headeremail = headerview.findViewById(R.id.textViewheaderemail);
+        headeremail.setText(useremail);
+        TextView headername = headerview.findViewById(R.id.textViewheadername);
+        headername.setText(username);
+
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -89,7 +113,11 @@ public class  MainPage extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        startActivity(new Intent(MainPage.this,Cart.class));
+        Bundle bundle = new Bundle();
+        bundle.putString("useremail",useremail);
+        Intent cartintent = new Intent(MainPage.this,Cart.class);
+        cartintent.putExtras(bundle);
+        startActivity(cartintent);
        /* int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

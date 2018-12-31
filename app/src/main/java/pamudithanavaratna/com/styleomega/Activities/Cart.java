@@ -34,6 +34,9 @@ public class Cart extends AppCompatActivity {
         }
 
     }
+
+
+
 /*
     public void OnClickPay (View v){
 

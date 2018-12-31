@@ -53,7 +53,7 @@ public class PaymentDetailsFragment extends Fragment {
             try {
 
                 ParsePosition pp = new ParsePosition(0);
-                PaymentDetails pd = new PaymentDetails(Integer.parseInt(accountNumber.getText().toString()),
+                PaymentDetails pd = new PaymentDetails(accountNumber.getText().toString(),
                         Integer.parseInt(vsc.getText().toString()),
                         new SimpleDateFormat("dd/mm/yyyy").parse(exDate.getText().toString(),pp),
                         user);

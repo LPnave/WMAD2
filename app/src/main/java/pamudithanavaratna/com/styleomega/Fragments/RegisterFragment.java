@@ -48,7 +48,7 @@ public class RegisterFragment extends Fragment {
                //Intent intent = new Intent(getActivity(),MainPage.class);
 
                 User user = new User(email.getText().toString(),firstname.getText().toString(),lastname.getText().toString(),
-                        Integer.parseInt( mobilenumber.getText().toString()),password.getText().toString());
+                         mobilenumber.getText().toString(),password.getText().toString());
 
                 user.save();
 

@@ -53,20 +53,32 @@ public class SignInFragment extends Fragment {
                 String passwordcheck = password.getText().toString();
 
                 try {
+                    if(emailcheck!=null && passwordcheck!=null) {
+                        // List<Login> userlog = Login.find(Login.class, "useremail=?",emailcheck);
+                        List<User> userlog = User.listAll(User.class);
 
-                   // List<Login> userlog = Login.find(Login.class, "useremail=?",emailcheck);
-                    List<Login> userlog = Login.listAll(Login.class);
+                        for (User u : userlog) {
+                            if (u.getEmail().equals(emailcheck) && u.getPassword().equals(passwordcheck)) {
 
-                    for(Login l : userlog){
-                        if(l.getUseremail().equals(emailcheck)&& l.getPassword().equals(passwordcheck)){
-                            startActivity(new Intent(getActivity(), MainPage.class));
-                            getActivity().finish();
+                                String name = u.getFname()+" "+u.getLname();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("useremail",emailcheck);
+                                bundle.putString("username",name);
+
+                                Intent movingtomain= new Intent(getActivity(), MainPage.class);
+                                movingtomain.putExtras(bundle);
+
+                                startActivity(movingtomain);
+                                getActivity().finish();
+
+                            } else {
+                                Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
+                            }
 
                         }
-                        else {
-                            Toast.makeText(getContext(),"Login failed",Toast.LENGTH_SHORT).show();
-                        }
-
+                    }else
+                    {
+                        Toast.makeText(getContext(),"Fill all feilds",Toast.LENGTH_SHORT);
                     }
 
                 }
