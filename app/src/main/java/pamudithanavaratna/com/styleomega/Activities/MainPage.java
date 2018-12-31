@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,6 +119,8 @@ public class  MainPage extends AppCompatActivity
         Intent cartintent = new Intent(MainPage.this,Cart.class);
         cartintent.putExtras(bundle);
         startActivity(cartintent);
+
+        Toast.makeText(this,"Loading cart",Toast.LENGTH_SHORT);
        /* int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
