@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -20,10 +19,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.R;
-import pamudithanavaratna.com.styleomega.RecyclerViewAdapter;
+import pamudithanavaratna.com.styleomega.ItemRecyclerViewAdapter;
 
 
 /**
@@ -32,7 +30,7 @@ import pamudithanavaratna.com.styleomega.RecyclerViewAdapter;
 public class ItemsPageFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerViewAdapter recyclerViewAdapter;
+    private ItemRecyclerViewAdapter itemRecyclerViewAdapter;
     private ArrayList<Products> productsarray;
 
     public ItemsPageFragment() {
@@ -110,8 +108,8 @@ public class ItemsPageFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        recyclerViewAdapter = new RecyclerViewAdapter(productsarray,getContext());
-        recyclerView.setAdapter(recyclerViewAdapter);
+        itemRecyclerViewAdapter = new ItemRecyclerViewAdapter(productsarray,getContext());
+        recyclerView.setAdapter(itemRecyclerViewAdapter);
 
         return v;
     }

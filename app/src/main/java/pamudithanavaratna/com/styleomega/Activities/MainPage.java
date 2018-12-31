@@ -24,6 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.Fragments.MainFragment;
 import pamudithanavaratna.com.styleomega.Fragments.tab1;
 import pamudithanavaratna.com.styleomega.Fragments.tab2;
@@ -35,13 +36,14 @@ public class  MainPage extends AppCompatActivity
     public static FragmentManager fragmentManager;
     String useremail;
     String username;
+    User loggedin;
+
+    public User getLoggedin() {
+        return loggedin;
+    }
 
     public String getUseremail() {
         return useremail;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     @Override
@@ -51,6 +53,7 @@ public class  MainPage extends AppCompatActivity
 
         useremail = getIntent().getExtras().getString("useremail");
         username = getIntent().getExtras().getString("username");
+        loggedin = (User) getIntent().getExtras().getSerializable("loggeduser");
         Bundle bundle = new Bundle();
         bundle.putString("useremail",useremail);
 
@@ -116,6 +119,7 @@ public class  MainPage extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         Bundle bundle = new Bundle();
         bundle.putString("useremail",useremail);
+        bundle.putSerializable("loggeduser",loggedin);
         Intent cartintent = new Intent(MainPage.this,Cart.class);
         cartintent.putExtras(bundle);
         startActivity(cartintent);

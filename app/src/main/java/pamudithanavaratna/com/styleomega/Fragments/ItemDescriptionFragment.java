@@ -23,7 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
+import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
 
 
@@ -110,7 +112,10 @@ public class ItemDescriptionFragment extends Fragment {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String date = simpleDateFormat.format(calendar.getTime());
 
-                OrderItem neworder = new OrderItem(name,inputamout,size,date,"saved",image);
+                MainPage mp =(MainPage) getActivity();
+                User account = mp.getLoggedin();
+
+                OrderItem neworder = new OrderItem(name,inputamout,size,date,"saved",image,output,price,account);
                 neworder.save();
 
                 Toast.makeText(getContext(),"Order placed",Toast.LENGTH_SHORT);

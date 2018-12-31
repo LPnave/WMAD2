@@ -14,31 +14,22 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Fragments.ItemDescriptionFragment;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG="Recycler view";
 
-    /*private ArrayList<String> imagenames = new ArrayList<>();
-    private ArrayList<String> images = new ArrayList<>();*/
+
     private ArrayList<Products> productlist;
     private Context context;
-/*
-    public RecyclerViewAdapter(ArrayList<String> imagenames, ArrayList<String> images, Context context) {
-        this.imagenames = imagenames;
-        this.images = images;
-        this.context = context;
-    }
-*/
 
-    public RecyclerViewAdapter(ArrayList<Products> products, Context context) {
+
+    public ItemRecyclerViewAdapter(ArrayList<Products> products, Context context) {
         this.productlist = products;
         this.context = context;
     }

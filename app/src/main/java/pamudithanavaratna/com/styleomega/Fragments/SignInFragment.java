@@ -64,6 +64,7 @@ public class SignInFragment extends Fragment {
                                 Bundle bundle = new Bundle();
                                 bundle.putString("useremail",emailcheck);
                                 bundle.putString("username",name);
+                                bundle.putSerializable("loggeduser",u);
 
                                 Intent movingtomain= new Intent(getActivity(), MainPage.class);
                                 movingtomain.putExtras(bundle);

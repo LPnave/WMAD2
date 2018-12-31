@@ -8,19 +8,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.Fragments.CartFragment;
 import pamudithanavaratna.com.styleomega.Fragments.PayFragment;
 import pamudithanavaratna.com.styleomega.R;
 
 public class Cart extends AppCompatActivity {
 
+    User loggedin;
 
+    public User getLoggedin() {
+        return loggedin;
+    }
 
     public static FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        loggedin= (User)getIntent().getExtras().getSerializable("loggeduser");
 
         fragmentManager= getSupportFragmentManager();
         if(findViewById(R.id.cartFragmentContainer)!=null){
