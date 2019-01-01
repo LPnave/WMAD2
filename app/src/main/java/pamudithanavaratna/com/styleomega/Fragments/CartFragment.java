@@ -1,6 +1,8 @@
 package pamudithanavaratna.com.styleomega.Fragments;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +35,8 @@ public class CartFragment extends Fragment {
     private RecyclerView cartrecycleview;
     private cartRecyclerViewAdapter cartRecyclerViewAdapter;
 
+    private SharedPreferences preferences;
+
     public CartFragment() {
         // Required empty public constructor
     }
@@ -42,13 +47,15 @@ public class CartFragment extends Fragment {
 
         orderlist= new ArrayList<>();
 
-        Cart cartactivity = (Cart)getActivity();
-        User loggeduser = cartactivity.getLoggedin();
+        preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
+        long userid = preferences.getLong("userid",0);
 
+        User loggeduser = User.findById(User.class,userid);
 
         List<OrderItem>ol=OrderItem.listAll(OrderItem.class);
         if(ol!=null) {
             for (OrderItem o : ol) {
+                //User user = o.getUser();
                 if (o.getUser().getEmail().equals(loggeduser.getEmail())) {
                     orderlist.add(o);
 

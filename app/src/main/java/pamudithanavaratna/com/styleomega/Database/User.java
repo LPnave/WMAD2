@@ -1,18 +1,17 @@
 package pamudithanavaratna.com.styleomega.Database;
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Unique;
 
 import java.io.Serializable;
 import java.sql.Blob;
 
-public class User extends SugarRecord implements Serializable {
+public class User extends SugarRecord<User> implements Serializable {
 
-    String email;
-    String Fname;
-    String Lname;
-    String ContactNumber;
-    String password;
+    public String email;
+    public String Fname;
+    public String Lname;
+    public String ContactNumber;
+    public String password;
     //Blob photo;
 
     public User() {

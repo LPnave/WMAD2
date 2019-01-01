@@ -1,6 +1,8 @@
 package pamudithanavaratna.com.styleomega.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -30,30 +32,33 @@ import pamudithanavaratna.com.styleomega.Fragments.tab1;
 import pamudithanavaratna.com.styleomega.Fragments.tab2;
 import pamudithanavaratna.com.styleomega.R;
 
-public class  MainPage extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class  MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static FragmentManager fragmentManager;
     String useremail;
     String username;
-    User loggedin;
 
-    public User getLoggedin() {
-        return loggedin;
-    }
 
-    public String getUseremail() {
-        return useremail;
-    }
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        useremail = getIntent().getExtras().getString("useremail");
-        username = getIntent().getExtras().getString("username");
-        loggedin = (User) getIntent().getExtras().getSerializable("loggeduser");
+        preferences = getSharedPreferences("user", MODE_PRIVATE);
+
+        long userid = preferences.getLong("userid",0);
+
+        User user= User.findById(User.class,userid);
+
+        useremail = user.getEmail();
+        username = user.Fname + " " + user.getLname();
+        //loggedin = (User) getIntent().getExtras().getSerializable("loggeduser");
+        //loggedin = (User) getIntent().getSerializableExtra("loggeduser");
         Bundle bundle = new Bundle();
         bundle.putString("useremail",useremail);
 
@@ -119,7 +124,7 @@ public class  MainPage extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         Bundle bundle = new Bundle();
         bundle.putString("useremail",useremail);
-        bundle.putSerializable("loggeduser",loggedin);
+        //bundle.putSerializable("loggeduser",loggedin);
         Intent cartintent = new Intent(MainPage.this,Cart.class);
         cartintent.putExtras(bundle);
         startActivity(cartintent);
@@ -144,6 +149,10 @@ public class  MainPage extends AppCompatActivity
         if (id == R.id.nav_profile) {
             startActivity( new Intent( MainPage.this,Profile.class));
         } else if (id == R.id.logout) {
+            preferences = getSharedPreferences("user",MODE_PRIVATE);
+            editor = preferences.edit();
+            editor.putBoolean("loginstatus", false);
+            editor.commit();
             startActivity(new Intent(MainPage.this, Sign_In.class));
 
         } else if (id == R.id.nav_slideshow) {
@@ -160,5 +169,7 @@ public class  MainPage extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
 

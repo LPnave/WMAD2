@@ -1,6 +1,9 @@
 package pamudithanavaratna.com.styleomega.Fragments;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,10 +43,14 @@ public class ItemDescriptionFragment extends Fragment {
 
     Button addtocart;
 
+    User account;
+
     int inputamout;
     int integerprice;
     String output;
     String size;
+
+    private SharedPreferences preferences;
 
     public ItemDescriptionFragment() {
         // Required empty public constructor
@@ -69,7 +76,7 @@ public class ItemDescriptionFragment extends Fragment {
         ImageView imagedes = v.findViewById(R.id.itemdesImage);
         final TextView subTotal = v.findViewById(R.id.subtotalTextView);
         final EditText amount = v.findViewById(R.id.noofitemsinput);
-        Button addtocart= v.findViewById(R.id.AddtoCartButton);
+         addtocart= v.findViewById(R.id.AddtoCartButton);
         Spinner sizespinner = v.findViewById(R.id.sizespinner);
 
 
@@ -112,13 +119,15 @@ public class ItemDescriptionFragment extends Fragment {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String date = simpleDateFormat.format(calendar.getTime());
 
-                MainPage mp =(MainPage) getActivity();
-                User account = mp.getLoggedin();
+                preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
+                long id = preferences.getLong("userid",0);
+
+                account = User.findById(User.class,id);
 
                 OrderItem neworder = new OrderItem(name,inputamout,size,date,"saved",image,output,price,account);
                 neworder.save();
 
-                Toast.makeText(getContext(),"Order placed",Toast.LENGTH_SHORT);
+                Toast.makeText(getContext(),"Added to Cart",Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -4,7 +4,7 @@ import com.orm.SugarRecord;
 
 import java.util.Date;
 
-public class OrderItem extends SugarRecord {
+public class OrderItem extends SugarRecord<OrderItem> {
 
     String itemname;
     int numberOfItems;
@@ -30,6 +30,7 @@ public class OrderItem extends SugarRecord {
         this.subtotal = subtotal;
         this.price = price;
         this.user = user;
+        System.out.println(this.user);
     }
 
     public String getItemname() {
@@ -65,6 +66,7 @@ public class OrderItem extends SugarRecord {
     }
 
     public User getUser() {
+       //String email= this.user.getEmail();
         return user;
     }
 }

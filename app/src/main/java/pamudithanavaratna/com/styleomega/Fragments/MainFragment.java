@@ -40,7 +40,8 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main,container,false);
 
-        sectionsPageAdapter = new SectionsPageAdapter(getActivity().getSupportFragmentManager());
+        sectionsPageAdapter = new SectionsPageAdapter(getChildFragmentManager());
+        //sectionsPageAdapter = new SectionsPageAdapter(getActivity().getSupportFragmentManager());
         viewPager = (ViewPager)v.findViewById(R.id.pager);
         setupViewPager(viewPager);
 
@@ -53,7 +54,7 @@ public class MainFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager){
 
-        SectionsPageAdapter sectionsPageAdapter = new SectionsPageAdapter(getActivity().getSupportFragmentManager());
+        SectionsPageAdapter sectionsPageAdapter = new SectionsPageAdapter(getChildFragmentManager());
         sectionsPageAdapter.addFragment(new tab1(),"Women");
         sectionsPageAdapter.addFragment(new tab2(),"Men");
         viewPager.setAdapter(sectionsPageAdapter);

@@ -50,7 +50,7 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
         cartViewHolder.cartitemPrice.setText(itemprice);
         cartViewHolder.cartitemname.setText(itemname);
         cartViewHolder.subtotal.setText(subTotal);
-        cartViewHolder.numofItems.setText(numofItems);
+        cartViewHolder.numofItems.setText(Integer.toString(numofItems));
 
         Picasso.get().load(image).into(cartViewHolder.cartimage);
 

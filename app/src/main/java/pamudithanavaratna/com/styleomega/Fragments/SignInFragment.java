@@ -1,8 +1,11 @@
 package pamudithanavaratna.com.styleomega.Fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,10 +32,28 @@ public class SignInFragment extends Fragment {
     private Button SignInBtn;
     private Button RegisterBtn;
 
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+
     public SignInFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+       /* boolean loginstatus = preferences.getBoolean("login",false);
+
+        if(loginstatus){
+            long userid = preferences.getLong("userid",0);
+
+            Intent gotomainpage = new Intent();
+            Bundle bundle = new Bundle();
+
+
+        }*/
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +63,8 @@ public class SignInFragment extends Fragment {
 
         final EditText email = v.findViewById(R.id.emailSignIn);
         final EditText password = v.findViewById(R.id.passwordSignIn);
+
+
 
         //Sign in Button
         SignInBtn = v.findViewById(R.id.SignInBtn);
@@ -60,14 +83,23 @@ public class SignInFragment extends Fragment {
                         for (User u : userlog) {
                             if (u.getEmail().equals(emailcheck) && u.getPassword().equals(passwordcheck)) {
 
-                                String name = u.getFname()+" "+u.getLname();
+                                preferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
+                                editor = preferences.edit();
+
+                                editor.putLong("userid",u.getId());
+                                editor.putBoolean("loginstatus",true);
+                                editor.commit();
+
+                                /*String name = u.getFname()+" "+u.getLname();
                                 Bundle bundle = new Bundle();
                                 bundle.putString("useremail",emailcheck);
                                 bundle.putString("username",name);
-                                bundle.putSerializable("loggeduser",u);
+                                //bundle.putSerializable("loggeduser",u);*/
 
                                 Intent movingtomain= new Intent(getActivity(), MainPage.class);
-                                movingtomain.putExtras(bundle);
+                               // movingtomain.putExtra("loggeduser",u);
+                                //movingtomain.putExtras(bundle);
+
 
                                 startActivity(movingtomain);
                                 getActivity().finish();

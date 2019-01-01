@@ -21,13 +21,17 @@ public class Cart extends AppCompatActivity {
         return loggedin;
     }
 
+    public void setLoggedin(User loggedin) {
+        this.loggedin = loggedin;
+    }
+
     public static FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        loggedin= (User)getIntent().getExtras().getSerializable("loggeduser");
+        loggedin= (User)getIntent().getSerializableExtra("loggeduser");
 
         fragmentManager= getSupportFragmentManager();
         if(findViewById(R.id.cartFragmentContainer)!=null){
