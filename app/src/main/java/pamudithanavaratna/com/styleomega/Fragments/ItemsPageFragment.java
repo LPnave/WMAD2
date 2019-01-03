@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.R;
@@ -31,7 +32,8 @@ public class ItemsPageFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ItemRecyclerViewAdapter itemRecyclerViewAdapter;
-    private ArrayList<Products> productsarray;
+
+    private List<Products> filterproducts;
 
     public ItemsPageFragment() {
         // Required empty public constructor
@@ -41,59 +43,10 @@ public class ItemsPageFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        productsarray = new ArrayList<>();
+        String categroy = getArguments().getString("category");
+        String gender = getArguments().getString("gender");
 
-        JSONObject json  = null;
-        try {
-
-
-            json = new JSONObject(loadJSON("Products.json"));
-
-            String gender = (String) getArguments().getSerializable("gender");
-            String category = (String) getArguments().getSerializable("category");
-            String key = gender+category;
-
-            if(gender.equals("Women")) {
-
-                JSONArray productlist = json.getJSONArray("womenproducts");
-
-                for (int i = 0; i < productlist.length(); i++) {
-                    JSONObject product = productlist.getJSONObject(i);
-
-                    if (key.equals(product.getString("Category"))) {
-
-                        String itemname = product.getString("Name");
-                        String itemurl = product.getString("Image");
-                        String price = product.getString("Price");
-
-                        productsarray.add(new Products(itemname, itemurl,price));
-                    }
-                }
-            }
-            else if(gender.equals("Men")){
-                JSONArray productlist = json.getJSONArray("menproducts");
-                for (int i = 0; i < productlist.length(); i++) {
-                    JSONObject product = productlist.getJSONObject(i);
-
-                    if (key.equals(product.getString("Category"))) {
-
-                        String itemname = product.getString("Name");
-                        String itemurl = product.getString("Image");
-                        String price = product.getString("Price");
-
-                        productsarray.add(new Products(itemname, itemurl,price));
-                    }
-                }
-            }
-            else {
-                Toast.makeText(getContext(),"ERROR",Toast.LENGTH_SHORT);
-            }
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        filterproducts = Products.find(Products.class,"gender=? and category=?",gender,categroy);
 
     }
 
@@ -108,7 +61,7 @@ public class ItemsPageFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        itemRecyclerViewAdapter = new ItemRecyclerViewAdapter(productsarray,getContext());
+        itemRecyclerViewAdapter = new ItemRecyclerViewAdapter((ArrayList<Products>) filterproducts,getContext());
         recyclerView.setAdapter(itemRecyclerViewAdapter);
 
         return v;
@@ -117,23 +70,7 @@ public class ItemsPageFragment extends Fragment {
 
 
 
-    public String loadJSON (String filename){
-        String json = null;
 
-        try{
-            InputStream is = getActivity().getAssets().open(filename);
-            byte[] buffer = new byte[is.available()];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer,"UTF-8");
-        }
-        catch(IOException e){
-            e.printStackTrace();
-            return  null;
-        }
-        return json;
-
-    }
 
 
 

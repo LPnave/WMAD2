@@ -6,20 +6,31 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.gson.JsonIOException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Database.Login;
 import pamudithanavaratna.com.styleomega.Database.PaymentDetails;
+import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.ShippingDetails;
 import pamudithanavaratna.com.styleomega.Database.User;
 
 public class Splashscreen extends AppCompatActivity {
 
     private SharedPreferences preferences;
+    private ArrayList<Products> productsarray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +63,52 @@ public class Splashscreen extends AppCompatActivity {
 
             }
 
+            JSONObject json  = null;
+
+            try{
+                json = new JSONObject(loadJSON("Products.json"));
+
+                JSONArray wproductlist = json.getJSONArray("womenproducts");
+                for (int i = 0; i <wproductlist.length(); i++) {
+                    JSONObject product = wproductlist.getJSONObject(i);
+
+                        int itemid = product.getInt("Id");
+                        String itemname = product.getString("Name");
+                        String itemurl = product.getString("Image");
+                        String price = product.getString("Price");
+                        String category = product.getString("Category");
+
+                        productsarray.add(new Products(itemid ,itemname, category,price,itemurl,"Women"));
+                        for(Products p : productsarray){
+                            p.save();
+                        }
+
+                }
+                productsarray.clear();
+                JSONArray mproductlist = json.getJSONArray("menproducts");
+                for (int i = 0; i <mproductlist.length(); i++) {
+                    JSONObject product = mproductlist.getJSONObject(i);
+
+                    int itemid = product.getInt("Id");
+                    String itemname = product.getString("Name");
+                    String itemurl = product.getString("Image");
+                    String price = product.getString("Price");
+                    String category = product.getString("Category");
+
+                    productsarray.add(new Products(itemid ,itemname, category,price,itemurl,"Men"));
+                    for(Products p : productsarray){
+                        p.save();
+                    }
+
+                }
+
+
+            }
+            catch (JSONException e){
+            e.printStackTrace();
+
+            }
+
             startActivity(new Intent(Splashscreen.this, Sign_In.class));
             finish();
 
@@ -60,5 +117,23 @@ public class Splashscreen extends AppCompatActivity {
             startActivity(new Intent(Splashscreen.this,MainPage.class));
             finish();
         }
+    }
+
+    public String loadJSON (String filename){
+        String json = null;
+
+        try{
+            InputStream is = getAssets().open(filename);
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer,"UTF-8");
+        }
+        catch(IOException e){
+            e.printStackTrace();
+            return  null;
+        }
+        return json;
+
     }
 }

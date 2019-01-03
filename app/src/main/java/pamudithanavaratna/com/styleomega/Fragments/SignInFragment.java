@@ -15,10 +15,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Iterator;
 import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.Database.Login;
+import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
 import pamudithanavaratna.com.styleomega.Activities.Sign_In;
@@ -79,7 +81,6 @@ public class SignInFragment extends Fragment {
                     if(emailcheck!=null && passwordcheck!=null) {
                         // List<Login> userlog = Login.find(Login.class, "useremail=?",emailcheck);
                         List<User> userlog = User.listAll(User.class);
-
                         for (User u : userlog) {
                             if (u.getEmail().equals(emailcheck) && u.getPassword().equals(passwordcheck)) {
 

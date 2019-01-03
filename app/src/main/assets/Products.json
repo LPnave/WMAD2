@@ -3,63 +3,63 @@
       {
         "Id": 1,
         "Name": "Whistles Limited chunky cable knit jumper",
-        "Category": "WomenTops",
+        "Category": "Tops",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/whistles-limited-chunky-cable-knit-jumper/11354710-1-green?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 2,
         "Name": "Vila button through waist detail blouses",
-        "Category": "WomenTops",
+        "Category": "Tops",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/vila-button-through-waist-detail-blouse/11356038-1-green?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 3,
         "Name": "ASOS DESIGN high waisted pencil skirt",
-        "Category": "WomenBottoms",
+        "Category": "Bottoms",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/asos-design-high-waisted-pencil-skirt/10864987-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 4,
         "Name": "ASOS DESIGN full length flare in wine velvet",
-        "Category": "WomenBottoms",
+        "Category": "Bottoms",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/asos-design-full-length-flare-in-wine-velvet/10887221-1-winecord?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 5,
         "Name": "ASOS DESIGN Ring And Ball Cross Body Bag With Chain Strap",
-        "Category": "WomenAccessories",
+        "Category": "Accessories",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/asos-design-ring-and-ball-cross-body-bag-with-chain-strap/10975543-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 6,
         "Name": "ASOS DESIGN vintage tan jeans belt",
-        "Category": "WomenAccessories",
+        "Category": "Accessories",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/asos-design-vintage-tan-jeans-belt/8986448-1-brown?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 7,
         "Name": "adidas Originals Gazelle trainers in black suede",
-        "Category": "WomenFootwear",
+        "Category": "Footwear",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/adidas-originals-gazelle-trainers-in-black-suede/6786894-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 8,
         "Name": "ASOS DESIGN Lifetime pointed ballet flats",
-        "Category": "WomenFootwear",
+        "Category": "Footwear",
         "Price": "100",
         "Image": "https://images.asos-media.com/products/asos-design-lifetime-pointed-ballet-flats/10865734-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
       },
       {
         "Id": 9,
         "Name":"ASOS DESIGN cape side midi pencil dress",
-        "Category":"WomenPartywear",
+        "Category": "Partywear",
         "Price": "100",
         "Image":"https://images.asos-media.com/products/asos-design-cape-side-midi-pencil-dress/11003993-1-rust?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 
@@ -67,7 +67,7 @@
       {
         "Id": 10,
         "Name":"ASOS DESIGN maxi dress with cluster embellished bodice",
-        "Category":"WomenPartywear",
+        "Category": "Partywear",
         "Price": "100",
         "Image":"https://images.asos-media.com/products/asos-design-maxi-dress-with-cluster-embellished-bodice/9950500-1-pink?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 
@@ -75,7 +75,7 @@
       {
         "Id": 11,
         "Name":"ASOS DESIGN hooded slim coat with faux fur trim",
-        "Category":"WomenCoats & Jackets",
+        "Category": "Coats & Jackets",
         "Price": "100",
         "Image":"https://images.asos-media.com/products/asos-design-hooded-slim-coat-with-faux-fur-trim/9562077-1-red?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 
@@ -83,7 +83,7 @@
       {
         "Id": 12,
         "Name":"Boohoo oversized wool look trench coat in grey",
-        "Category":"WomenCoats & Jackets",
+        "Category": "Coats & Jackets",
         "Price": "100",
         "Image":"https://images.asos-media.com/products/boohoo-oversized-wool-look-trench-coat-in-grey/10791335-1-grey?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 
@@ -91,89 +91,89 @@
     ],
   "menproducts":[
     {
-      "Id": 1,
+      "Id": 13,
       "Name": "ASOS DESIGN stretch slim fit check shirt in navy & green",
-      "Category": "MenTops",
+      "Category":"Tops",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/asos-design-stretch-slim-fit-check-shirt-in-navy-green/10389091-1-green?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 2,
+      "Id": 14,
       "Name": "ASOS DESIGN regular fit floral shirt in black",
-      "Category": "MenTops",
+      "Category":"Tops",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/asos-design-regular-fit-floral-shirt-in-black/10363629-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 3,
+      "Id": 15,
       "Name": "ASOS DESIGN skinny jeans in smokey blue",
-      "Category": "MenBottoms",
+      "Category":"Bottoms",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/asos-design-skinny-jeans-in-smokey-blue/8872830-1-darkwashblue?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 4,
+      "Id": 16,
       "Name": "Adidas Athletics stadium shorts in grey cf2514",
-      "Category": "MenBottoms",
+      "Category":"Bottoms",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/adidas-athletics-stadium-shorts-in-grey-cf2514/8728258-1-grey?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 5,
+      "Id": 17,
       "Name": "Burton Menswear tie in navy",
-      "Category": "MenAccessories",
+      "Category":"Accessories",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/burton-menswear-tie-in-navy/9089088-1-navy?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 6,
+      "Id": 18,
       "Name": "ASOS DESIGN watch with crocodile emboss strap and contrast black case",
-      "Category": "MenAccessories",
+      "Category":"Accessories",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/asos-design-watch-with-crocodile-emboss-strap-and-contrast-black-case/10423613-1-brown?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 7,
+      "Id": 19,
       "Name": "Ted Baker Murain oxford shoes in tan leather",
-      "Category": "MenFootwear",
+      "Category":"Footwear",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/ted-baker-murain-oxford-shoes-in-tan-leather/10278236-1-tan?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 8,
+      "Id":20,
       "Name": "Nike Air Jordan Future Trainers In Black",
-      "Category": "MenFootwear",
+      "Category":"Footwear",
       "Price": "100",
       "Image": "https://images.asos-media.com/products/nike-air-jordan-future-trainers-in-black/10273095-1-black?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
     },
     {
-      "Id": 9,
+      "Id": 21,
       "Name":"ASOS DESIGN skinny smart trouser in navy cotton",
-      "Category":"MenPartywear",
+      "Category":"Partywear",
       "Price": "100",
       "Image":"https://images.asos-media.com/products/asos-design-skinny-smart-trouser-in-navy-cotton/10361293-1-navy?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 
     },
     {
-      "Id": 10,
+      "Id": 22,
       "Name":"ASOS DESIGN skinny blazer in charcoal wool mix",
-      "Category":"MenPartywear",
+      "Category":"Partywear",
       "Price": "100",
       "Image":"https://images.asos-media.com/products/asos-design-skinny-blazer-in-charcoal-wool-mix/10281377-1-charcoal?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 
     },
     {
-      "Id": 11,
+      "Id": 23,
       "Name":"Burton Menswear overcoat In navy",
-      "Category":"MenCoats & Jackets",
+      "Category":"Coats & Jackets",
       "Price": "100",
       "Image":"https://images.asos-media.com/products/burton-menswear-overcoat-in-navy/10477881-1-blue?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 
     },
     {
-      "Id": 12,
+      "Id": 24,
       "Name":"G-Star Motac biker jacket in black",
-      "Category":"MenCoats & Jackets",
+      "Category":"Coats & Jackets",
       "Price": "100",
       "Image":"https://images.asos-media.com/products/g-star-motac-biker-jacket-in-black/10927980-1-dkblack?$XL$?$XXL$&wid=300&fmt=jpeg&qlt=80,0&op_sharpen=0&resMode=sharp2&op_usm=1,0.4,6,1&iccEmbed=0&printRes=72"
 

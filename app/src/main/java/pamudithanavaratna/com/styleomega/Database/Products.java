@@ -10,17 +10,19 @@ public class Products extends SugarRecord {
     String category;
     String price;
     String picture;
+    String gender;
 
     public Products() {
 
     }
 
-    public Products(int productId, String productName, String category, String price, String picture) {
+    public Products(int productId, String productName, String category, String price, String picture, String gender) {
         this.productId = productId;
         this.productName = productName;
         this.category = category;
         this.price = price;
         this.picture = picture;
+        this.gender = gender;
     }
 
     public Products(String productName, String picture) {
@@ -72,5 +74,13 @@ public class Products extends SugarRecord {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }
