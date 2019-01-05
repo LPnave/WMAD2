@@ -63,7 +63,7 @@ public class CartFragment extends Fragment {
 
             }
         }else{
-            Toast.makeText(getContext(),"Cart empty",Toast.LENGTH_SHORT);
+            Toast.makeText(getContext(),"Cart empty",Toast.LENGTH_SHORT).show();
         }
     }
 

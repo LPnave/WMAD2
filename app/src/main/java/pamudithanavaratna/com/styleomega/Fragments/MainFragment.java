@@ -1,6 +1,7 @@
 package pamudithanavaratna.com.styleomega.Fragments;
 
 
+import android.app.SearchManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -9,13 +10,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pamudithanavaratna.com.styleomega.Activities.MainPage;
+import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.R;
 
 
@@ -34,6 +40,8 @@ public class MainFragment extends Fragment {
     }
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,6 +55,7 @@ public class MainFragment extends Fragment {
 
         TabLayout tabLayout = v.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
 
 
         return v;
@@ -93,11 +102,10 @@ public class MainFragment extends Fragment {
         public int getCount() {
             return fragmentList.size();
         }
-    }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+
 
     }
+
+
 }

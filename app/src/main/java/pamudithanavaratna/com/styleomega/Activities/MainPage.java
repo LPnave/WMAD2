@@ -1,5 +1,6 @@
 package pamudithanavaratna.com.styleomega.Activities;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,24 +21,28 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.User;
+import pamudithanavaratna.com.styleomega.Fragments.ItemsPageFragment;
 import pamudithanavaratna.com.styleomega.Fragments.MainFragment;
 import pamudithanavaratna.com.styleomega.Fragments.tab1;
 import pamudithanavaratna.com.styleomega.Fragments.tab2;
 import pamudithanavaratna.com.styleomega.R;
 
-public class  MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class  MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     public static FragmentManager fragmentManager;
     String useremail;
     String username;
-
+    Bundle bundle = new Bundle();
+    private static ArrayList<String> resultlist= new ArrayList<>();
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -49,6 +54,12 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView)findViewById(R.id.searchbar);
+
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(true);
+
         preferences = getSharedPreferences("user", MODE_PRIVATE);
 
         long userid = preferences.getLong("userid",0);
@@ -57,23 +68,42 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
 
         useremail = user.getEmail();
         username = user.Fname + " " + user.getLname();
-        //loggedin = (User) getIntent().getExtras().getSerializable("loggeduser");
-        //loggedin = (User) getIntent().getSerializableExtra("loggeduser");
-        Bundle bundle = new Bundle();
+
         bundle.putString("useremail",useremail);
 
-        fragmentManager= getSupportFragmentManager();
-        if(findViewById(R.id.MainContainer)!=null){
-            if(savedInstanceState!=null){
-                return;
-            }
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            MainFragment mainFragment = new MainFragment();
-            mainFragment.setArguments(bundle);
-            fragmentTransaction.add(R.id.MainContainer,mainFragment);
-            fragmentTransaction.commit();
 
+
+            fragmentManager = getSupportFragmentManager();
+            if (findViewById(R.id.MainContainer) != null) {
+                if (savedInstanceState != null) {
+                    return;
+                }
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                MainFragment mainFragment = new MainFragment();
+                mainFragment.setArguments(bundle);
+                fragmentTransaction.add(R.id.MainContainer, mainFragment);
+                fragmentTransaction.commit();
+
+            }
+
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            doMySearch(query);
+            ItemsPageFragment IPF = new ItemsPageFragment();
+            IPF.setArguments(bundle);
+
+            if(findViewById(R.id.MainContainer)!=null) {
+                //to avoid overlapping
+                if (savedInstanceState != null) {
+                    return;
+                }
+
+                MainPage.fragmentManager.beginTransaction().replace(R.id.MainContainer,
+                        IPF, null).addToBackStack("results").commit();
+            }
         }
+
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -94,7 +124,34 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         headername.setText(username);
 
 
+        //searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
+        //searchView.setQueryHint("Search for products");
+
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void doMySearch(String query) {
+        List<Products> searchlist = Products.listAll(Products.class);
+        for (Products p : searchlist){
+            String[] querykeywords = query.split("\\s+");
+            String[] keywords = p.getProductName().split("\\s+");
+
+            for(String s : keywords) {
+                for(String j : querykeywords) {
+                    if (s.equalsIgnoreCase(j)) {
+                        if(resultlist==null || !resultlist.contains(p.getId())) {
+
+                            resultlist.add(p.getId().toString());
+
+                        }
+                    }
+                }
+            }
+        }
+
+        bundle.putStringArrayList("resultlist", resultlist);
+
+
     }
 
 
@@ -169,6 +226,7 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
 }

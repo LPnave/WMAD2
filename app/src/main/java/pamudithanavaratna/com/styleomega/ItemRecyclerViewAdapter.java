@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.Database.Products;
@@ -25,11 +26,11 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     private static final String TAG="Recycler view";
 
 
-    private ArrayList<Products> productlist;
+    private List<Products> productlist;
     private Context context;
 
 
-    public ItemRecyclerViewAdapter(ArrayList<Products> products, Context context) {
+    public ItemRecyclerViewAdapter(List<Products> products, Context context) {
         this.productlist = products;
         this.context = context;
     }

@@ -6,10 +6,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
+
+import com.orm.SugarRecord;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +38,7 @@ public class ItemsPageFragment extends Fragment {
     private ItemRecyclerViewAdapter itemRecyclerViewAdapter;
 
     private List<Products> filterproducts;
+    private ArrayList<String> resultlist;
 
     public ItemsPageFragment() {
         // Required empty public constructor
@@ -43,11 +48,27 @@ public class ItemsPageFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+         resultlist =  getArguments().getStringArrayList("resultlist");
+
         String categroy = getArguments().getString("category");
         String gender = getArguments().getString("gender");
 
-        filterproducts = Products.find(Products.class,"gender=? and category=?",gender,categroy);
+        if(resultlist!=null && categroy==null){
+            filterproducts = new ArrayList<>();
 
+            for(String s : resultlist){
+                Long id = Long.parseLong(s);
+
+                Products resultproduct = SugarRecord.findById(Products.class,id);
+
+                filterproducts.add(resultproduct);
+            }
+
+        }
+        else if(resultlist==null && categroy!=null){
+
+            filterproducts = Products.find(Products.class, "gender=? and category=?", gender, categroy);
+        }
     }
 
     @Override
@@ -61,17 +82,11 @@ public class ItemsPageFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        itemRecyclerViewAdapter = new ItemRecyclerViewAdapter((ArrayList<Products>) filterproducts,getContext());
+        itemRecyclerViewAdapter = new ItemRecyclerViewAdapter((List<Products>) filterproducts,getContext());
         recyclerView.setAdapter(itemRecyclerViewAdapter);
 
         return v;
     }
-
-
-
-
-
-
 
 
 }
