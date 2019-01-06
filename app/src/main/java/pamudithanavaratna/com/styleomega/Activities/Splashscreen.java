@@ -39,6 +39,56 @@ public class Splashscreen extends AppCompatActivity {
         preferences = getSharedPreferences("user",MODE_PRIVATE);
         boolean loginstatus = preferences.getBoolean("loginstatus", false);
 
+        List<Products> plistcheck= Products.listAll(Products.class);
+
+        if(plistcheck.isEmpty()) {
+
+            JSONObject json = null;
+
+            try {
+                json = new JSONObject(loadJSON("Products.json"));
+
+                JSONArray wproductlist = json.getJSONArray("womenproducts");
+                for (int i = 0; i < wproductlist.length(); i++) {
+                    JSONObject product = wproductlist.getJSONObject(i);
+
+                    int itemid = product.getInt("Id");
+                    String itemname = product.getString("Name");
+                    String itemurl = product.getString("Image");
+                    String price = product.getString("Price");
+                    String category = product.getString("Category");
+
+                    productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Women"));
+                    for (Products p : productsarray) {
+                        p.save();
+                    }
+
+                }
+                productsarray.clear();
+                JSONArray mproductlist = json.getJSONArray("menproducts");
+                for (int i = 0; i < mproductlist.length(); i++) {
+                    JSONObject product = mproductlist.getJSONObject(i);
+
+                    int itemid = product.getInt("Id");
+                    String itemname = product.getString("Name");
+                    String itemurl = product.getString("Image");
+                    String price = product.getString("Price");
+                    String category = product.getString("Category");
+
+                    productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Men"));
+                    for (Products p : productsarray) {
+                        p.save();
+                    }
+
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+
+            }
+        }
+
 
         if(!loginstatus) {
             List<User> ul = User.listAll(User.class);
@@ -61,56 +111,6 @@ public class Splashscreen extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-            }
-
-            List<Products> plistcheck= Products.listAll(Products.class);
-
-            if(plistcheck==null) {
-
-                JSONObject json = null;
-
-                try {
-                    json = new JSONObject(loadJSON("Products.json"));
-
-                    JSONArray wproductlist = json.getJSONArray("womenproducts");
-                    for (int i = 0; i < wproductlist.length(); i++) {
-                        JSONObject product = wproductlist.getJSONObject(i);
-
-                        int itemid = product.getInt("Id");
-                        String itemname = product.getString("Name");
-                        String itemurl = product.getString("Image");
-                        String price = product.getString("Price");
-                        String category = product.getString("Category");
-
-                        productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Women"));
-                        for (Products p : productsarray) {
-                            p.save();
-                        }
-
-                    }
-                    productsarray.clear();
-                    JSONArray mproductlist = json.getJSONArray("menproducts");
-                    for (int i = 0; i < mproductlist.length(); i++) {
-                        JSONObject product = mproductlist.getJSONObject(i);
-
-                        int itemid = product.getInt("Id");
-                        String itemname = product.getString("Name");
-                        String itemurl = product.getString("Image");
-                        String price = product.getString("Price");
-                        String category = product.getString("Category");
-
-                        productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Men"));
-                        for (Products p : productsarray) {
-                            p.save();
-                        }
-
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                }
             }
 
             startActivity(new Intent(Splashscreen.this, Sign_In.class));

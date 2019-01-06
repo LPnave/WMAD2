@@ -71,8 +71,8 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
 
         User user= User.findById(User.class,userid);
 
-        useremail = user.getEmail();
-        username = user.Fname + " " + user.getLname();
+        useremail = user.email;
+        username = user.Fname + " " + user.Lname;
 
         bundle.putString("useremail",useremail);
 
@@ -144,7 +144,7 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
             for(String s : keywords) {
                 for(String j : querykeywords) {
                     if (s.equalsIgnoreCase(j)) {
-                        if(resultlist==null || !resultlist.contains(p.getId())) {
+                        if(resultlist==null || !resultlist.contains(p.getId().toString())) {
 
                             resultlist.add(p.getId().toString());
 
