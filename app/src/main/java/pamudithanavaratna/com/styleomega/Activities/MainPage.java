@@ -54,6 +54,11 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        if(resultlist!=null){
+
+            resultlist.clear();
+        }
+
         SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView)findViewById(R.id.searchbar);
 
