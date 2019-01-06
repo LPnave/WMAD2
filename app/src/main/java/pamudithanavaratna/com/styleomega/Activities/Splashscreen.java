@@ -63,14 +63,18 @@ public class Splashscreen extends AppCompatActivity {
 
             }
 
-            JSONObject json  = null;
+            List<Products> plistcheck= Products.listAll(Products.class);
 
-            try{
-                json = new JSONObject(loadJSON("Products.json"));
+            if(plistcheck==null) {
 
-                JSONArray wproductlist = json.getJSONArray("womenproducts");
-                for (int i = 0; i <wproductlist.length(); i++) {
-                    JSONObject product = wproductlist.getJSONObject(i);
+                JSONObject json = null;
+
+                try {
+                    json = new JSONObject(loadJSON("Products.json"));
+
+                    JSONArray wproductlist = json.getJSONArray("womenproducts");
+                    for (int i = 0; i < wproductlist.length(); i++) {
+                        JSONObject product = wproductlist.getJSONObject(i);
 
                         int itemid = product.getInt("Id");
                         String itemname = product.getString("Name");
@@ -78,35 +82,35 @@ public class Splashscreen extends AppCompatActivity {
                         String price = product.getString("Price");
                         String category = product.getString("Category");
 
-                        productsarray.add(new Products(itemid ,itemname, category,price,itemurl,"Women"));
-                        for(Products p : productsarray){
+                        productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Women"));
+                        for (Products p : productsarray) {
                             p.save();
                         }
 
-                }
-                productsarray.clear();
-                JSONArray mproductlist = json.getJSONArray("menproducts");
-                for (int i = 0; i <mproductlist.length(); i++) {
-                    JSONObject product = mproductlist.getJSONObject(i);
+                    }
+                    productsarray.clear();
+                    JSONArray mproductlist = json.getJSONArray("menproducts");
+                    for (int i = 0; i < mproductlist.length(); i++) {
+                        JSONObject product = mproductlist.getJSONObject(i);
 
-                    int itemid = product.getInt("Id");
-                    String itemname = product.getString("Name");
-                    String itemurl = product.getString("Image");
-                    String price = product.getString("Price");
-                    String category = product.getString("Category");
+                        int itemid = product.getInt("Id");
+                        String itemname = product.getString("Name");
+                        String itemurl = product.getString("Image");
+                        String price = product.getString("Price");
+                        String category = product.getString("Category");
 
-                    productsarray.add(new Products(itemid ,itemname, category,price,itemurl,"Men"));
-                    for(Products p : productsarray){
-                        p.save();
+                        productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Men"));
+                        for (Products p : productsarray) {
+                            p.save();
+                        }
+
                     }
 
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
                 }
-
-
-            }
-            catch (JSONException e){
-            e.printStackTrace();
-
             }
 
             startActivity(new Intent(Splashscreen.this, Sign_In.class));
