@@ -61,7 +61,7 @@ public class Splashscreen extends AppCompatActivity {
                     String price = product.getString("Price");
                     String category = product.getString("Category");
 
-                    productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Women"));
+                    productsarray.add(new Products(itemid,10,itemname, category, price, itemurl, "Women"));
                     for (Products p : productsarray) {
                         p.save();
                     }
@@ -78,7 +78,7 @@ public class Splashscreen extends AppCompatActivity {
                     String price = product.getString("Price");
                     String category = product.getString("Category");
 
-                    productsarray.add(new Products(itemid, itemname, category, price, itemurl, "Men"));
+                    productsarray.add(new Products(itemid,10 ,itemname, category, price, itemurl, "Men"));
                     for (Products p : productsarray) {
                         p.save();
                     }

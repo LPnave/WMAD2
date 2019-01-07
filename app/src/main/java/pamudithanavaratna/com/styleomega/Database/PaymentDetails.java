@@ -4,7 +4,7 @@ import com.orm.SugarRecord;
 
 import java.util.Date;
 
-public class PaymentDetails extends SugarRecord {
+public class PaymentDetails extends SugarRecord<PaymentDetails> {
 
     String cardnumber;
     int vsc;

@@ -4,7 +4,7 @@ import com.orm.SugarRecord;
 
 import java.io.Serializable;
 
-public class ShippingDetails extends SugarRecord implements Serializable {
+public class ShippingDetails extends SugarRecord<ShippingDetails> implements Serializable {
 
     String address;
     String lane;

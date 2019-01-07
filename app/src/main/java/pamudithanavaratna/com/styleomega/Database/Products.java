@@ -4,8 +4,9 @@ import com.orm.SugarRecord;
 
 import java.sql.Blob;
 
-public class Products extends SugarRecord {
+public class Products extends SugarRecord<Products> {
     int productId;
+    int stock;
     String productName;
     String category;
     String price;
@@ -13,11 +14,11 @@ public class Products extends SugarRecord {
     String gender;
 
     public Products() {
-
     }
 
-    public Products(int productId, String productName, String category, String price, String picture, String gender) {
+    public Products(int productId, int stock, String productName, String category, String price, String picture, String gender) {
         this.productId = productId;
+        this.stock = stock;
         this.productName = productName;
         this.category = category;
         this.price = price;
@@ -82,5 +83,13 @@ public class Products extends SugarRecord {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

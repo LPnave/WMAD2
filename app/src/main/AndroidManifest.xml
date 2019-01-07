@@ -16,7 +16,7 @@
         tools:replace="adroid:icon">
 
         <meta-data android:name="DATABASE" android:value="StyleOmega.db" />
-        <meta-data android:name="VERSION" android:value="2" />
+        <meta-data android:name="VERSION" android:value="3" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="pamudithanavaratna.com.styleomega" />
 
@@ -36,6 +36,7 @@
             ></activity>
         <activity
             android:name=".Activities.MainPage"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/title_activity_main_page"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

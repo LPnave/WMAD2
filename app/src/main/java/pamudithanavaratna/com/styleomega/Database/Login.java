@@ -2,7 +2,7 @@ package pamudithanavaratna.com.styleomega.Database;
 
 import com.orm.SugarRecord;
 
-public class Login extends SugarRecord {
+public class Login extends SugarRecord<Login> {
 
     String useremail;
     String password;

@@ -48,6 +48,7 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         final Products p = productlist.get(i);
 
+        final long itemid = p.getId();
         final String imageUrl= p.getPicture();
         final String itemname = p.getProductName();
         final String Price = p.getPrice();
@@ -59,13 +60,11 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,itemname,Toast.LENGTH_SHORT);
+                Toast.makeText(context,itemname,Toast.LENGTH_SHORT).show();
 
 
                 Bundle bundle = new Bundle();
-                bundle.putString("itemname",itemname);
-                bundle.putString("itemprice",Price);
-                bundle.putString("image", imageUrl);
+                bundle.putLong("itemID",itemid);
                 ItemDescriptionFragment IDF = new ItemDescriptionFragment();
                 IDF.setArguments(bundle);
 

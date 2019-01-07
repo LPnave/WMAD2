@@ -28,6 +28,7 @@ import java.util.Date;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
+import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
 
@@ -37,13 +38,14 @@ import pamudithanavaratna.com.styleomega.R;
  */
 public class ItemDescriptionFragment extends Fragment {
 
-    String image;
-    String price;
-    String name;
+
+
+    long id;
 
     Button addtocart;
 
     User account;
+    Products p;
 
     int inputamout;
     int integerprice;
@@ -59,9 +61,9 @@ public class ItemDescriptionFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         image = getArguments().getString("image");
-         price = getArguments().getString("itemprice");
-         name = getArguments().getString("itemname");
+         id = getArguments().getLong("itemID");
+         p = Products.findById(Products.class,id);
+
     }
 
     @Override
@@ -73,6 +75,7 @@ public class ItemDescriptionFragment extends Fragment {
 
         TextView nametext = v.findViewById(R.id.itemname);
         TextView pricetext = v.findViewById(R.id.priceTextView);
+        TextView stocktext = v.findViewById(R.id.TextViewStock);
         ImageView imagedes = v.findViewById(R.id.itemdesImage);
         final TextView subTotal = v.findViewById(R.id.subtotalTextView);
         final EditText amount = v.findViewById(R.id.noofitemsinput);
@@ -80,10 +83,11 @@ public class ItemDescriptionFragment extends Fragment {
         Spinner sizespinner = v.findViewById(R.id.sizespinner);
 
 
-        Picasso.get().load(image).into(imagedes);
+        Picasso.get().load(p.getPicture()).into(imagedes);
 
-        nametext.setText(name);
-        pricetext.setText(price);
+        nametext.setText(p.getProductName());
+        pricetext.setText(p.getPrice());
+        stocktext.setText(p.getStock()+"");
 
         ArrayAdapter<String> sizeadapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_list_item_1,getResources().getStringArray(R.array.sizes));
@@ -100,12 +104,17 @@ public class ItemDescriptionFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                 inputamout = Integer.parseInt(charSequence.toString());
+
+                try{
+                    inputamout = Integer.parseInt(charSequence.toString());
+                }catch(NumberFormatException ex){
+                    Toast.makeText(getContext(),"Please enter a value",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                 integerprice = Integer.parseInt(price);
+                 integerprice = Integer.parseInt(p.getPrice());
                 int calc = inputamout*integerprice;
                 output = Integer.toString(calc);
                 subTotal.setText(output);
@@ -124,10 +133,22 @@ public class ItemDescriptionFragment extends Fragment {
 
                 account = User.findById(User.class,id);
 
-                OrderItem neworder = new OrderItem(name,inputamout,size,date,"saved",image,output,price,account);
+                int newstock = p.getStock() - inputamout;
+                p.setStock(newstock);
+                p.save();
+
+                OrderItem neworder = new OrderItem(p.getProductName(),inputamout,size,date,"saved",p.getPicture(),output,p.getPrice(),account);
                 neworder.save();
 
                 Toast.makeText(getContext(),"Added to Cart",Toast.LENGTH_SHORT).show();
+
+                ItemDescriptionFragment fragment = (ItemDescriptionFragment)
+                        getFragmentManager().findFragmentById(R.id.MainContainer);
+
+                getFragmentManager().beginTransaction()
+                        .detach(fragment)
+                        .attach(fragment)
+                        .commit();
             }
         });
 
