@@ -56,6 +56,8 @@ public class GridAdapter extends BaseAdapter {
             imageView.setImageResource(images[i]);
             textView.setText(values[i]);
 
+        }else{
+            myview =(View) view;
         }
 
         return myview;

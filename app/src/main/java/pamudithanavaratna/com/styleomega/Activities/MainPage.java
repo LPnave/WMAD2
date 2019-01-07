@@ -54,6 +54,8 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+
+
         if(resultlist!=null){
 
             resultlist.clear();
@@ -64,6 +66,29 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(true);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerview = navigationView.getHeaderView(0);
+        TextView headeremail = headerview.findViewById(R.id.textViewheaderemail);
+        headeremail.setText(useremail);
+        TextView headername = headerview.findViewById(R.id.textViewheadername);
+        headername.setText(username);
+
+
+        //searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
+        //searchView.setQueryHint("Search for products");
+
+        navigationView.setNavigationItemSelectedListener(this);
 
         preferences = getSharedPreferences("user", MODE_PRIVATE);
 
@@ -100,9 +125,9 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
 
             if(findViewById(R.id.MainContainer)!=null) {
                 //to avoid overlapping
-                if (savedInstanceState != null) {
+               /* if (savedInstanceState != null) {
                     return;
-                }
+                }*/
 
                 MainPage.fragmentManager.beginTransaction().replace(R.id.MainContainer,
                         IPF, null).addToBackStack("results").commit();
@@ -111,28 +136,7 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
 
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View headerview = navigationView.getHeaderView(0);
-        TextView headeremail = headerview.findViewById(R.id.textViewheaderemail);
-        headeremail.setText(useremail);
-        TextView headername = headerview.findViewById(R.id.textViewheadername);
-        headername.setText(username);
-
-
-        //searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
-        //searchView.setQueryHint("Search for products");
-
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     private void doMySearch(String query) {

@@ -40,13 +40,17 @@ public class tab1 extends Fragment {
         // Required empty public constructor
     }
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+    View v;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v= inflater.inflate(R.layout.fragment_tab1, container, false);
+         v= inflater.inflate(R.layout.fragment_tab1, container, false);
         /*categoryBtnW = v.findViewById(R.id.catergoryBtnWomen);
         categoryBtnW.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +59,8 @@ public class tab1 extends Fragment {
                         new ItemsPageFragment(), null).addToBackStack("mainPageW").commit();
             }
         });*/
+
+
 
         gview = (GridView) v.findViewById(R.id.gridview);
         final GridAdapter gridAdapter = new GridAdapter(getActivity(),categories,images);
@@ -82,6 +88,7 @@ public class tab1 extends Fragment {
 
         return v;
     }
+
 
 }
 

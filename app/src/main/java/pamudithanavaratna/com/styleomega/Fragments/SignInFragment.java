@@ -45,16 +45,7 @@ public class SignInFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       /* boolean loginstatus = preferences.getBoolean("login",false);
 
-        if(loginstatus){
-            long userid = preferences.getLong("userid",0);
-
-            Intent gotomainpage = new Intent();
-            Bundle bundle = new Bundle();
-
-
-        }*/
     }
 
     @Override

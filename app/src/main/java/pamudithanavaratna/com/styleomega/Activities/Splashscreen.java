@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import pamudithanavaratna.com.styleomega.App;
 import pamudithanavaratna.com.styleomega.Database.Login;
 import pamudithanavaratna.com.styleomega.Database.PaymentDetails;
 import pamudithanavaratna.com.styleomega.Database.Products;
@@ -36,8 +37,10 @@ public class Splashscreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        preferences = getSharedPreferences("user",MODE_PRIVATE);
+       preferences = getSharedPreferences("user",MODE_PRIVATE);
         boolean loginstatus = preferences.getBoolean("loginstatus", false);
+
+       //boolean loginstatus =App.getBool("loginstatus");
 
         List<Products> plistcheck= Products.listAll(Products.class);
 
@@ -93,7 +96,7 @@ public class Splashscreen extends AppCompatActivity {
         if(!loginstatus) {
             List<User> ul = User.listAll(User.class);
 
-            if (ul != null) {
+            if (ul == null) {
 
                 Login testlog = new Login("pamudithanavaratna@gmail.com", "123");
                 testlog.save();
