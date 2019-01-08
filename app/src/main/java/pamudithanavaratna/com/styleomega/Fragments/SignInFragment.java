@@ -31,8 +31,8 @@ import pamudithanavaratna.com.styleomega.Activities.Sign_In;
  */
 public class SignInFragment extends Fragment {
 
-    private Button SignInBtn;
-    private Button RegisterBtn;
+     Button SignInBtn;
+     Button RegisterBtn;
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -60,7 +60,7 @@ public class SignInFragment extends Fragment {
 
 
         //Sign in Button
-        SignInBtn = v.findViewById(R.id.SignInBtn);
+        SignInBtn = (Button) v.findViewById(R.id.SignInBtn);
         SignInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +128,7 @@ public class SignInFragment extends Fragment {
 
 
         //Register Button
-        RegisterBtn = v.findViewById(R.id.RegisterBtn);
+        RegisterBtn = (Button) v.findViewById(R.id.RegisterBtn);
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

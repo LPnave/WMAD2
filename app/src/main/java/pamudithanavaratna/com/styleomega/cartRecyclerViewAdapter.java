@@ -23,6 +23,8 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
     private ArrayList<OrderItem> orderlist;
     private Context context;
 
+    Long orderid;
+
     public cartRecyclerViewAdapter(ArrayList<OrderItem> orderlist, Context context) {
         this.orderlist = orderlist;
         this.context = context;
@@ -41,6 +43,7 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
     public void onBindViewHolder(@NonNull cartViewHolder cartViewHolder, int i) {
         OrderItem o = orderlist.get(i);
 
+        orderid = o.getId();
         String image = o.getImage();
         String itemname = o.getItemname();
         String itemprice =o.getPrice();
@@ -78,6 +81,7 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
         TextView subtotal;
         TextView numofItems;
         Button paybtn;
+        Button Deletebtn;
         RelativeLayout relativeLayout;
 
         public cartViewHolder (View cartview){
@@ -90,7 +94,20 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
             numofItems = cartview.findViewById(R.id.viewnumberofitems);
             relativeLayout = cartview.findViewById(R.id.recyclecartRelativeLayout);
             paybtn = cartview.findViewById(R.id.paybtn);
+            Deletebtn = cartview.findViewById(R.id.deletebtn);
 
+            Deletebtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    OrderItem.deleteAll(OrderItem.class,"id=?",orderid.toString());
+                    int i = getAdapterPosition();
+                    orderlist.remove(i);
+
+                    notifyItemRemoved(i);
+
+                    notifyItemRangeChanged(i,orderlist.size());
+                }
+            });
         }
     }
 }

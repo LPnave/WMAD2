@@ -31,6 +31,7 @@ import pamudithanavaratna.com.styleomega.Database.User;
 public class Splashscreen extends AppCompatActivity {
 
     private SharedPreferences preferences;
+
     private ArrayList<Products> productsarray = new ArrayList<>();
 
     @Override
@@ -39,6 +40,7 @@ public class Splashscreen extends AppCompatActivity {
 
        preferences = getSharedPreferences("user",MODE_PRIVATE);
         boolean loginstatus = preferences.getBoolean("loginstatus", false);
+
 
        //boolean loginstatus =App.getBool("loginstatus");
 
@@ -96,7 +98,7 @@ public class Splashscreen extends AppCompatActivity {
         if(!loginstatus) {
             List<User> ul = User.listAll(User.class);
 
-            if (ul == null) {
+            if (ul.size()==0) {
 
                 Login testlog = new Login("pamudithanavaratna@gmail.com", "123");
                 testlog.save();
