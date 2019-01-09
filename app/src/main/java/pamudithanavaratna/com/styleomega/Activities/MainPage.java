@@ -77,19 +77,6 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View headerview = navigationView.getHeaderView(0);
-        TextView headeremail = headerview.findViewById(R.id.textViewheaderemail);
-        headeremail.setText(useremail);
-        TextView headername = headerview.findViewById(R.id.textViewheadername);
-        headername.setText(username);
-
-
-        //searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
-        //searchView.setQueryHint("Search for products");
-
-        navigationView.setNavigationItemSelectedListener(this);
-
         preferences = getSharedPreferences("user", MODE_PRIVATE);
 
         long userid = preferences.getLong("userid",0);
@@ -101,7 +88,14 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
 
         bundle.putString("useremail",useremail);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerview = navigationView.getHeaderView(0);
+        TextView headeremail = headerview.findViewById(R.id.textViewheaderemail);
+        headeremail.setText(useremail);
+        TextView headername = headerview.findViewById(R.id.textViewheadername);
+        headername.setText(username);
 
+              navigationView.setNavigationItemSelectedListener(this);
 
             fragmentManager = getSupportFragmentManager();
             if (findViewById(R.id.MainContainer) != null) {
