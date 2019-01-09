@@ -2,6 +2,7 @@ package pamudithanavaratna.com.styleomega.Fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -43,7 +45,7 @@ public class ItemDescriptionFragment extends Fragment {
     long id;
 
     Button addtocart;
-
+    Button sharingbutton;
     User account;
     Products p;
 
@@ -64,7 +66,9 @@ public class ItemDescriptionFragment extends Fragment {
          id = getArguments().getLong("itemID");
          p = Products.findById(Products.class,id);
 
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -152,7 +156,25 @@ public class ItemDescriptionFragment extends Fragment {
             }
         });
 
+        sharingbutton = v.findViewById(R.id.sharebutton);
+        sharingbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareproduct();
+            }
+        });
+
         return v;
     }
 
+    private void shareproduct(){
+        String s = "visit style omega for your shopping pleasures";
+        Intent shareintent = new Intent(android.content.Intent.ACTION_SEND);
+        shareintent.setType("text/plain");
+        shareintent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        shareintent.putExtra(android.content.Intent.EXTRA_TEXT, s);
+
+        startActivity(Intent.createChooser(shareintent,"Share via"));
+
+    }
 }
