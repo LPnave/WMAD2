@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="pamudithanavaratna.com.styleomega">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.orm.SugarApp"
@@ -14,38 +14,47 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="adroid:icon">
-
-        <meta-data android:name="DATABASE" android:value="StyleOmega.db" />
-        <meta-data android:name="VERSION" android:value="3" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="pamudithanavaratna.com.styleomega" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="StyleOmega.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="3" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="pamudithanavaratna.com.styleomega" />
 
         <activity android:name=".Activities.Sign_In" />
         <activity
             android:name=".Activities.Splashscreen"
             android:theme="@style/splashtheme">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Cart"
-            android:label="Cart"
-            ></activity>
+        <activity
+            android:name=".Activities.Cart"
+            android:label="Cart" />
         <activity
             android:name=".Activities.MainPage"
-            android:windowSoftInputMode="adjustPan"
             android:label="@string/title_activity_main_page"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".Activities.Profile" />
+        <activity android:name=".Activities.About_Us"></activity>
     </application>
 
 </manifest>
