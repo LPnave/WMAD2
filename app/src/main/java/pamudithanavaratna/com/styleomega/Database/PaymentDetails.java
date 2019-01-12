@@ -21,4 +21,36 @@ public class PaymentDetails extends SugarRecord<PaymentDetails> {
         ExpiriyDate = expiriyDate;
         this.user = user;
     }
+
+    public String getCardnumber() {
+        return cardnumber;
+    }
+
+    public void setCardnumber(String cardnumber) {
+        this.cardnumber = cardnumber;
+    }
+
+    public int getVsc() {
+        return vsc;
+    }
+
+    public void setVsc(int vsc) {
+        this.vsc = vsc;
+    }
+
+    public Date getExpiriyDate() {
+        return ExpiriyDate;
+    }
+
+    public void setExpiriyDate(Date expiriyDate) {
+        ExpiriyDate = expiriyDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

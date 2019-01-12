@@ -17,15 +17,12 @@ public class About_Us extends AppCompatActivity {
         Element version = new Element();
         version.setTitle("Version 1.0");
 
-       // Element ads = new Element();
-       // ads.setTitle()
-
         View aboutpage = new AboutPage(this)
                 .isRTL(false)
                 .setImage(R.drawable.splashlogo)
                 .setDescription("We are an online clothing store bringing you the latest in the world of fashion")
                 .addItem(version)
-                .addGroup("Connect with us")
+                .addGroup("Contact Us at")
                 .addEmail("pamudithanavaratna@gamil.com")
                 .addFacebook("pamudithanavaratne")
                 .addInstagram("lp_nave")

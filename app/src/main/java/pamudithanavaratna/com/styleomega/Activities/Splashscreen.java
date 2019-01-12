@@ -112,6 +112,7 @@ public class Splashscreen extends AppCompatActivity {
                 try {
                     PaymentDetails testPD = new PaymentDetails("123546489", 549,
                             new SimpleDateFormat("dd/mm/yyyy").parse("14/03/2019"), testuser);
+                    testPD.save();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
