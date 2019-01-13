@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/historyRelative"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/historyitemimage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="image"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/historyitemname"
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/historyitemimage"
+            android:layout_toRightOf="@+id/historyitemimage"
+            android:text="itemname"
+            android:textColor="#000"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/historyitemprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/historyitemname"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_toEndOf="@+id/historyitemimage"
+            android:layout_toRightOf="@+id/historyitemimage"
+            android:text="itemprice" />
+
+        <TextView
+            android:id="@+id/historysubtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/textView7"
+            android:layout_toRightOf="@+id/textView7"
+            android:text="subtotal"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/textViewh2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/historyitemprice"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/historyitemimage"
+            android:layout_toRightOf="@+id/historyitemimage"
+            android:text="Sub Total:" />
+
+        <TextView
+            android:id="@+id/textViewh1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="86dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/historyitemprice"
+            android:layout_toRightOf="@+id/historyitemprice"
+            android:text="Items:" />
+
+        <TextView
+            android:id="@+id/historyAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="86dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/textView9"
+            android:layout_toRightOf="@+id/textView9"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/historydeletebtn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="78dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/historyitemimage"
+            android:layout_toRightOf="@+id/historyitemimage"
+            android:background="@drawable/ic_delete" />
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

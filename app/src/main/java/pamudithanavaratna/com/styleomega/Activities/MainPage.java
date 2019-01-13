@@ -215,8 +215,8 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
             editor.commit();
             startActivity(new Intent(MainPage.this, Sign_In.class));
 
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.purchasehistory) {
+            startActivity(new Intent(MainPage.this,OrderHistory.class));
         } else if (id == R.id.about_us) {
             startActivity( new Intent(MainPage.this,About_Us.class));
         } else if (id == R.id.nav_share) {

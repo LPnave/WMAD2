@@ -53,8 +53,11 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".Activities.Profile" />
-        <activity android:name=".Activities.About_Us"></activity>
+        <activity
+            android:name=".Activities.Profile"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".Activities.About_Us" />
+        <activity android:name=".Activities.OrderHistory"></activity>
     </application>
 
 </manifest>

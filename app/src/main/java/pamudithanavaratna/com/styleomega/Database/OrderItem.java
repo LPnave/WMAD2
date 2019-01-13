@@ -69,4 +69,40 @@ public class OrderItem extends SugarRecord<OrderItem> {
        //String email= this.user.getEmail();
         return user;
     }
+
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
+    }
+
+    public void setNumberOfItems(int numberOfItems) {
+        this.numberOfItems = numberOfItems;
+    }
+
+    public void setSize(String size) {
+        Size = size;
+    }
+
+    public void setAddedDate(String addedDate) {
+        this.addedDate = addedDate;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setSubtotal(String subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

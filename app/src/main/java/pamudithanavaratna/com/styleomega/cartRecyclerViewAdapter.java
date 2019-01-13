@@ -23,7 +23,6 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
     private ArrayList<OrderItem> orderlist;
     private Context context;
 
-    Long orderid;
 
     public cartRecyclerViewAdapter(ArrayList<OrderItem> orderlist, Context context) {
         this.orderlist = orderlist;
@@ -40,12 +39,12 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull cartViewHolder cartViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final cartViewHolder cartViewHolder, int i) {
         OrderItem o = orderlist.get(i);
 
-        orderid = o.getId();
+        final Long orderid = o.getId();
         String image = o.getImage();
-        String itemname = o.getItemname();
+        final String itemname = o.getItemname();
         String itemprice =o.getPrice();
         int numofItems =o.getNumberOfItems();
         String subTotal = o.getSubtotal();
@@ -60,10 +59,26 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
         cartViewHolder.paybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"payment Successful", Toast.LENGTH_SHORT);
+                Toast.makeText(context,"payment Successful" + itemname, Toast.LENGTH_SHORT).show();
+                OrderItem oi = (OrderItem.find(OrderItem.class,"id=?", orderid.toString()).get(0));
+                oi.setStatus("Paid");
+                oi.save();
+
             }
         });
 
+        cartViewHolder.Deletebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int j = cartViewHolder.getAdapterPosition();
+                String text = cartViewHolder.cartitemname.getText().toString();
+                OrderItem.deleteAll(OrderItem.class,"id=?",Long.toString(orderid));
+
+                orderlist.remove(j);
+                notifyItemRemoved(j);
+                notifyItemRangeChanged(j,orderlist.size());
+            }
+        });
 
 
     }
@@ -96,18 +111,7 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
             paybtn = cartview.findViewById(R.id.paybtn);
             Deletebtn = cartview.findViewById(R.id.deletebtn);
 
-            Deletebtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    OrderItem.deleteAll(OrderItem.class,"id=?",orderid.toString());
-                    int i = getAdapterPosition();
-                    orderlist.remove(i);
 
-                    notifyItemRemoved(i);
-
-                    notifyItemRangeChanged(i,orderlist.size());
-                }
-            });
         }
     }
 }
