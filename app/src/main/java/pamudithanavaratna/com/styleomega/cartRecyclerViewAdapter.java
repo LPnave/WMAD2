@@ -63,7 +63,10 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
                 OrderItem oi = (OrderItem.find(OrderItem.class,"id=?", orderid.toString()).get(0));
                 oi.setStatus("Paid");
                 oi.save();
-
+                int j = cartViewHolder.getAdapterPosition();
+                orderlist.remove(j);
+                notifyItemRemoved(j);
+                notifyItemRangeChanged(j,orderlist.size());
             }
         });
 
@@ -71,7 +74,6 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
             @Override
             public void onClick(View view) {
                 int j = cartViewHolder.getAdapterPosition();
-                String text = cartViewHolder.cartitemname.getText().toString();
                 OrderItem.deleteAll(OrderItem.class,"id=?",Long.toString(orderid));
 
                 orderlist.remove(j);

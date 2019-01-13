@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -36,7 +37,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.historyV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull historyViewHolder historyViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final historyViewHolder historyViewHolder, int i) {
         OrderItem o = historylist.get(i);
 
         final Long orderid = o.getId();
@@ -52,6 +53,18 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.historyV
         historyViewHolder.hnumofItems.setText(String.valueOf(numofItems));
 
         Picasso.get().load(image).into(historyViewHolder.himage);
+
+        historyViewHolder.hDeletebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"Delete Successful", Toast.LENGTH_SHORT).show();
+                OrderItem.deleteAll(OrderItem.class,"id=?",Long.toString(orderid));
+                int k = historyViewHolder.getAdapterPosition();
+                historylist.remove(k);
+                notifyItemRemoved(k);
+                notifyItemRangeChanged(k,historylist.size());
+            }
+        });
     }
 
     @Override
