@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import pamudithanavaratna.com.styleomega.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.HistoryAdapter;
@@ -22,7 +23,8 @@ public class OrderHistory extends AppCompatActivity {
     private RecyclerView historyrecycleview;
     private HistoryAdapter historyAdapter;
 
-    private SharedPreferences preferences;
+    //private SharedPreferences preferences;
+    private CustomSharedPreference preference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +33,9 @@ public class OrderHistory extends AppCompatActivity {
 
         historylist= new ArrayList<>();
 
-        preferences = getSharedPreferences("user",Context.MODE_PRIVATE);
-        long userid = preferences.getLong("userid",0);
+        //preferences = getSharedPreferences("user",Context.MODE_PRIVATE);
+        //long userid = preferences.getLong("userid",0);
+        long userid = preference.getALong(getApplicationContext(),"userid");
 
         User loggeduser = User.findById(User.class,userid);
         List<OrderItem> ol=OrderItem.listAll(OrderItem.class);

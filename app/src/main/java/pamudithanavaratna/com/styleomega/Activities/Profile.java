@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import pamudithanavaratna.com.styleomega.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.PaymentDetails;
 import pamudithanavaratna.com.styleomega.Database.ShippingDetails;
 import pamudithanavaratna.com.styleomega.Database.User;
@@ -20,7 +21,8 @@ import pamudithanavaratna.com.styleomega.R;
 
 public class Profile extends AppCompatActivity {
 
-    private SharedPreferences preferences;
+    //private SharedPreferences preferences;
+    private CustomSharedPreference preference;
 
     Button savebutton;
 
@@ -29,8 +31,9 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        preferences = getSharedPreferences("user", MODE_PRIVATE);
-        long userid = preferences.getLong("userid",0);
+        //preferences = getSharedPreferences("user", MODE_PRIVATE);
+       // long userid = preferences.getLong("userid",0);
+        long userid = preference.getALong(getApplicationContext(),"userid");
 
         final User currentuser = User.findById(User.class,userid);
         String id = Long.toString(userid);

@@ -29,6 +29,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
+import pamudithanavaratna.com.styleomega.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.User;
@@ -54,7 +55,8 @@ public class ItemDescriptionFragment extends Fragment {
     String output;
     String size;
 
-    private SharedPreferences preferences;
+    //private SharedPreferences preferences;
+    private CustomSharedPreference preference = new CustomSharedPreference();
 
     public ItemDescriptionFragment() {
         // Required empty public constructor
@@ -132,8 +134,9 @@ public class ItemDescriptionFragment extends Fragment {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String date = simpleDateFormat.format(calendar.getTime());
 
-                preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
-                long id = preferences.getLong("userid",0);
+                //preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
+                //long id = preferences.getLong("userid",0);
+                long id = preference.getALong(getContext(),"userid");
 
                 account = User.findById(User.class,id);
 

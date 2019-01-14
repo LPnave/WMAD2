@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
+import pamudithanavaratna.com.styleomega.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.Login;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.User;
@@ -34,8 +35,9 @@ public class SignInFragment extends Fragment {
      Button SignInBtn;
      Button RegisterBtn;
 
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
+    //private SharedPreferences preferences;
+    //private SharedPreferences.Editor editor;
+    private CustomSharedPreference preference = new CustomSharedPreference();
 
     public SignInFragment() {
         // Required empty public constructor
@@ -75,12 +77,17 @@ public class SignInFragment extends Fragment {
                         for (User u : userlog) {
                             if (u.getEmail().equals(emailcheck) && u.getPassword().equals(passwordcheck)) {
 
-                                preferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-                                editor = preferences.edit();
 
-                                editor.putLong("userid",u.getId());
-                                editor.putBoolean("loginstatus",true);
-                                editor.commit();
+                                preference.putALong(getContext(),"userid",u.getId());
+                                preference.putABool(getContext(),"loginstatus",true);
+
+                                //preferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
+                                //editor = preferences.edit();
+
+                               // editor.putLong("userid",u.getId());
+                               // editor.putBoolean("loginstatus",true);
+                               // editor.commit();
+
 
                                 /*String name = u.getFname()+" "+u.getLname();
                                 Bundle bundle = new Bundle();
@@ -139,5 +146,7 @@ public class SignInFragment extends Fragment {
         return v;
 
     }
+
+
 
 }

@@ -21,6 +21,7 @@ import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Activities.Cart;
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
+import pamudithanavaratna.com.styleomega.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
@@ -35,7 +36,8 @@ public class CartFragment extends Fragment {
     private RecyclerView cartrecycleview;
     private cartRecyclerViewAdapter cartRecyclerViewAdapter;
 
-    private SharedPreferences preferences;
+    //private SharedPreferences preferences;
+    private CustomSharedPreference preference;
 
     public CartFragment() {
         // Required empty public constructor
@@ -47,8 +49,9 @@ public class CartFragment extends Fragment {
 
         orderlist= new ArrayList<>();
 
-        preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
-        long userid = preferences.getLong("userid",0);
+        //preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
+        //long userid = preferences.getLong("userid",0);
+        long userid = preference.getALong(getContext(),"userid");
 
         User loggeduser = User.findById(User.class,userid);
 

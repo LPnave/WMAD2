@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import pamudithanavaratna.com.styleomega.App;
+
+import pamudithanavaratna.com.styleomega.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.Login;
 import pamudithanavaratna.com.styleomega.Database.PaymentDetails;
 import pamudithanavaratna.com.styleomega.Database.Products;
@@ -30,7 +31,8 @@ import pamudithanavaratna.com.styleomega.Database.User;
 
 public class Splashscreen extends AppCompatActivity {
 
-    private SharedPreferences preferences;
+    //private SharedPreferences preferences;
+    private CustomSharedPreference preference;
 
     private ArrayList<Products> productsarray = new ArrayList<>();
 
@@ -38,11 +40,10 @@ public class Splashscreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       preferences = getSharedPreferences("user",MODE_PRIVATE);
-        boolean loginstatus = preferences.getBoolean("loginstatus", false);
+       //preferences = getSharedPreferences("user",MODE_PRIVATE);
+       // boolean loginstatus = preferences.getBoolean("loginstatus", false);
+        boolean loginstatus = preference.getABool(getApplicationContext(),"loginstatus");
 
-
-       //boolean loginstatus =App.getBool("loginstatus");
 
         List<Products> plistcheck= Products.listAll(Products.class);
 

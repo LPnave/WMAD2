@@ -1,5 +1,6 @@
 package pamudithanavaratna.com.styleomega.Activities;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import pamudithanavaratna.com.styleomega.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.Fragments.ItemsPageFragment;
@@ -44,9 +46,9 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
     Bundle bundle = new Bundle();
     private static ArrayList<String> resultlist= new ArrayList<>();
 
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
-
+    //private SharedPreferences preferences;
+    //private SharedPreferences.Editor editor;
+    private CustomSharedPreference preference;
 
 
     @Override
@@ -77,9 +79,9 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        preferences = getSharedPreferences("user", MODE_PRIVATE);
+        //preferences = getSharedPreferences("user", MODE_PRIVATE);
 
-        long userid = preferences.getLong("userid",0);
+        long userid = preference.getALong(getApplicationContext(),"userid");
 
         User user= User.findById(User.class,userid);
 
@@ -202,16 +204,19 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         if (id == R.id.nav_profile) {
             startActivity( new Intent( MainPage.this,Profile.class));
         } else if (id == R.id.logout) {
-            preferences = getSharedPreferences("user",MODE_PRIVATE);
-            editor = preferences.edit();
-            editor.putBoolean("loginstatus", false);
-            editor.commit();
+            //preference = getSharedPreferences("user",MODE_PRIVATE);
+            //editor = preferences.edit();
+            //editor.putBoolean("loginstatus", false);
+            //editor.commit();
+            preference.putABool(getApplicationContext(),"loginstatus", false);
             startActivity(new Intent(MainPage.this, Sign_In.class));
+            finish();
 
         } else if (id == R.id.purchasehistory) {
             startActivity(new Intent(MainPage.this,OrderHistory.class));
         } else if (id == R.id.about_us) {
             startActivity( new Intent(MainPage.this,About_Us.class));
+
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
