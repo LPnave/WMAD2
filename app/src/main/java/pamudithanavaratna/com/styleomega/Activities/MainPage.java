@@ -118,18 +118,11 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
             IPF.setArguments(bundle);
 
             if(findViewById(R.id.MainContainer)!=null) {
-                //to avoid overlapping
-               /* if (savedInstanceState != null) {
-                    return;
-                }*/
 
                 MainPage.fragmentManager.beginTransaction().replace(R.id.MainContainer,
                         IPF, null).addToBackStack("results").commit();
             }
         }
-
-
-
 
     }
 

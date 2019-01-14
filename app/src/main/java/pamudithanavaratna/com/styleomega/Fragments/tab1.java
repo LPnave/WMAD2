@@ -51,16 +51,6 @@ public class tab1 extends Fragment {
         // Inflate the layout for this fragment
 
          v= inflater.inflate(R.layout.fragment_tab1, container, false);
-        /*categoryBtnW = v.findViewById(R.id.catergoryBtnWomen);
-        categoryBtnW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainPage.fragmentManager.beginTransaction().add(R.id.MainContainer,
-                        new ItemsPageFragment(), null).addToBackStack("mainPageW").commit();
-            }
-        });*/
-
-
 
         gview = (GridView) v.findViewById(R.id.gridview);
         final GridAdapter gridAdapter = new GridAdapter(getActivity(),categories,images);

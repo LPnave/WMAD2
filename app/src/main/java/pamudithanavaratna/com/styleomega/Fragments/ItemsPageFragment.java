@@ -47,7 +47,7 @@ public class ItemsPageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //from the main page class for the search function
          resultlist =  getArguments().getStringArrayList("resultlist");
 
         String categroy = getArguments().getString("category");
