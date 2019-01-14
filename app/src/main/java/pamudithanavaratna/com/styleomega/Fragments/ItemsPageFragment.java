@@ -6,27 +6,18 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.orm.SugarRecord;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.R;
-import pamudithanavaratna.com.styleomega.ItemRecyclerViewAdapter;
+import pamudithanavaratna.com.styleomega.Adapters.ItemRecyclerViewAdapter;
 
 
 /**

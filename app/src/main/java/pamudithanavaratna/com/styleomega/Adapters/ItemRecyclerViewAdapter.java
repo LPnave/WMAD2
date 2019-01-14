@@ -1,4 +1,4 @@
-package pamudithanavaratna.com.styleomega;
+package pamudithanavaratna.com.styleomega.Adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Fragments.ItemDescriptionFragment;
+import pamudithanavaratna.com.styleomega.R;
 
 public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerViewAdapter.ViewHolder> {
 
