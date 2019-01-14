@@ -1,6 +1,8 @@
 package pamudithanavaratna.com.styleomega.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,26 +62,61 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
         cartViewHolder.paybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,"payment Successful" + itemname, Toast.LENGTH_SHORT).show();
-                OrderItem oi = (OrderItem.find(OrderItem.class,"id=?", orderid.toString()).get(0));
-                oi.setStatus("Paid");
-                oi.save();
-                int j = cartViewHolder.getAdapterPosition();
-                orderlist.remove(j);
-                notifyItemRemoved(j);
-                notifyItemRangeChanged(j,orderlist.size());
+
+                new AlertDialog.Builder(context)
+                        .setTitle("Confirm Payment for this Item?")
+                        .setMessage("The Account you have in your profile wil be used")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                OrderItem oi = (OrderItem.find(OrderItem.class,"id=?", orderid.toString()).get(0));
+                                oi.setStatus("Paid");
+                                oi.save();
+                                int j = cartViewHolder.getAdapterPosition();
+                                orderlist.remove(j);
+                                notifyItemRemoved(j);
+                                notifyItemRangeChanged(j,orderlist.size());
+                                Toast.makeText(context,"payment Successful" + itemname, Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).show();
+
+
             }
         });
 
         cartViewHolder.Deletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int j = cartViewHolder.getAdapterPosition();
-                OrderItem.deleteAll(OrderItem.class,"id=?",Long.toString(orderid));
 
-                orderlist.remove(j);
-                notifyItemRemoved(j);
-                notifyItemRangeChanged(j,orderlist.size());
+                new AlertDialog.Builder(context)
+                        .setTitle("Remove from cart?")
+                        .setMessage("Are you sure you want to delete the following listing?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                int j = cartViewHolder.getAdapterPosition();
+                                OrderItem.deleteAll(OrderItem.class,"id=?",Long.toString(orderid));
+
+                                orderlist.remove(j);
+                                notifyItemRemoved(j);
+                                notifyItemRangeChanged(j,orderlist.size());
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        }).show();
+
+
             }
         });
 

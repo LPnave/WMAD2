@@ -60,7 +60,6 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
         viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context,itemname,Toast.LENGTH_SHORT).show();
 
 
                 Bundle bundle = new Bundle();
