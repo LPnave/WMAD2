@@ -1,10 +1,7 @@
 package pamudithanavaratna.com.styleomega.Fragments;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.hardware.usb.UsbRequest;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,10 +22,8 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
-import pamudithanavaratna.com.styleomega.Activities.MainPage;
-import pamudithanavaratna.com.styleomega.CustomSharedPreference;
+import pamudithanavaratna.com.styleomega.Adapters.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.User;

@@ -1,7 +1,5 @@
 package pamudithanavaratna.com.styleomega.Activities;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,10 +9,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import pamudithanavaratna.com.styleomega.CustomSharedPreference;
+import pamudithanavaratna.com.styleomega.Adapters.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.User;
-import pamudithanavaratna.com.styleomega.HistoryAdapter;
+import pamudithanavaratna.com.styleomega.Adapters.HistoryAdapter;
 import pamudithanavaratna.com.styleomega.R;
 
 public class OrderHistory extends AppCompatActivity {

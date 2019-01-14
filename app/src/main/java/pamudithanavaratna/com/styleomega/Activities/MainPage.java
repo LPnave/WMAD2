@@ -1,20 +1,13 @@
 package pamudithanavaratna.com.styleomega.Activities;
 
-import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,13 +22,11 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import pamudithanavaratna.com.styleomega.CustomSharedPreference;
+import pamudithanavaratna.com.styleomega.Adapters.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.Fragments.ItemsPageFragment;
 import pamudithanavaratna.com.styleomega.Fragments.MainFragment;
-import pamudithanavaratna.com.styleomega.Fragments.tab1;
-import pamudithanavaratna.com.styleomega.Fragments.tab2;
 import pamudithanavaratna.com.styleomega.R;
 
 public class  MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{

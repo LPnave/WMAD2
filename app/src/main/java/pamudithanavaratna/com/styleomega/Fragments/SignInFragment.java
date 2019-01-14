@@ -1,9 +1,7 @@
 package pamudithanavaratna.com.styleomega.Fragments;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,13 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Iterator;
 import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
-import pamudithanavaratna.com.styleomega.CustomSharedPreference;
-import pamudithanavaratna.com.styleomega.Database.Login;
-import pamudithanavaratna.com.styleomega.Database.OrderItem;
+import pamudithanavaratna.com.styleomega.Adapters.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
 import pamudithanavaratna.com.styleomega.Activities.Sign_In;

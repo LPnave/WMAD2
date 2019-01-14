@@ -1,6 +1,5 @@
 package pamudithanavaratna.com.styleomega.Activities;
 
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +10,8 @@ import android.widget.Toast;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-import pamudithanavaratna.com.styleomega.CustomSharedPreference;
+import pamudithanavaratna.com.styleomega.Adapters.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.PaymentDetails;
 import pamudithanavaratna.com.styleomega.Database.ShippingDetails;
 import pamudithanavaratna.com.styleomega.Database.User;

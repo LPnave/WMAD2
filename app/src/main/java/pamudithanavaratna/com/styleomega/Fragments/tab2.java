@@ -7,12 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
-import pamudithanavaratna.com.styleomega.GridAdapter;
+import pamudithanavaratna.com.styleomega.Adapters.GridAdapter;
 import pamudithanavaratna.com.styleomega.R;
 
 /**

@@ -1,4 +1,4 @@
-package pamudithanavaratna.com.styleomega;
+package pamudithanavaratna.com.styleomega.Adapters;
 
 
 import android.content.Context;

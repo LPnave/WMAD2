@@ -1,4 +1,4 @@
-package pamudithanavaratna.com.styleomega;
+package pamudithanavaratna.com.styleomega.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import pamudithanavaratna.com.styleomega.R;
 
 public class GridAdapter extends BaseAdapter {
     Context context;
