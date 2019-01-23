@@ -49,7 +49,7 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
         String image = o.getImage();
         final String itemname = o.getItemname();
         String itemprice =o.getPrice();
-        int numofItems =o.getNumberOfItems();
+        int numofItems =o.getTotalquantity();
         String subTotal = o.getSubtotal();
 
         cartViewHolder.cartitemPrice.setText(itemprice);

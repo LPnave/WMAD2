@@ -7,99 +7,76 @@ import java.util.Date;
 public class OrderItem extends SugarRecord<OrderItem> {
 
     String itemname;
-    int numberOfItems;
-    String Size;
-    String addedDate;
+    int totalquantity;
     String status;
-    String image;
     String subtotal;
+    String image;
     String price;
-
     User user;
 
     public OrderItem() {
     }
 
-    public OrderItem(String itemname, int numberOfItems, String size, String addedDate, String status, String image, String subtotal, String price, User user) {
+    public OrderItem(String itemname, int totalquantity, String status, String subtotal, String image, String price, User user) {
         this.itemname = itemname;
-        this.numberOfItems = numberOfItems;
-        Size = size;
-        this.addedDate = addedDate;
+        this.totalquantity = totalquantity;
         this.status = status;
-        this.image = image;
         this.subtotal = subtotal;
+        this.image = image;
         this.price = price;
         this.user = user;
-        System.out.println(this.user);
-    }
-
-    public String getItemname() {
-        return itemname;
-    }
-
-    public int getNumberOfItems() {
-        return numberOfItems;
-    }
-
-    public String getSize() {
-        return Size;
-    }
-
-    public String getAddedDate() {
-        return addedDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getSubtotal() {
-        return subtotal;
     }
 
     public String getPrice() {
         return price;
     }
 
-    public User getUser() {
-       //String email= this.user.getEmail();
-        return user;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public void setItemname(String itemname) {
-        this.itemname = itemname;
-    }
-
-    public void setNumberOfItems(int numberOfItems) {
-        this.numberOfItems = numberOfItems;
-    }
-
-    public void setSize(String size) {
-        Size = size;
-    }
-
-    public void setAddedDate(String addedDate) {
-        this.addedDate = addedDate;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public String getImage() {
+        return image;
     }
 
     public void setImage(String image) {
         this.image = image;
     }
 
+    public String getItemname() {
+        return itemname;
+    }
+
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
+    }
+
+    public int getTotalquantity() {
+        return totalquantity;
+    }
+
+    public void setTotalquantity(int totalquantity) {
+        this.totalquantity = totalquantity;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSubtotal() {
+        return subtotal;
+    }
+
     public void setSubtotal(String subtotal) {
         this.subtotal = subtotal;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public User getUser() {
+        return user;
     }
 
     public void setUser(User user) {

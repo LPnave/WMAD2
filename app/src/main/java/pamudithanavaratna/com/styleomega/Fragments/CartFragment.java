@@ -52,7 +52,7 @@ public class CartFragment extends Fragment {
         if(ol!=null) {
             for (OrderItem o : ol) {
                 //User user = o.getUser();
-                if (o.getUser().getEmail().equals(loggeduser.getEmail())&& o.getStatus().equals("saved")) {
+                if (o.getUser().getEmail().equals(loggeduser.getEmail())&& o.getStatus().equalsIgnoreCase("Saved")) {
                     orderlist.add(o);
 
                 }

@@ -22,8 +22,10 @@ import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import pamudithanavaratna.com.styleomega.Adapters.CustomSharedPreference;
+import pamudithanavaratna.com.styleomega.Database.CartDB;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.Database.User;
@@ -138,8 +140,26 @@ public class ItemDescriptionFragment extends Fragment {
                 p.setStock(newstock);
                 p.save();
 
-                OrderItem neworder = new OrderItem(p.getProductName(),inputamout,size,date,"saved",p.getPicture(),output,p.getPrice(),account);
-                neworder.save();
+                OrderItem check= checkorder(p.getProductName());
+                CartDB neworder;
+                if(check== null){
+                    OrderItem newbundleorder = new OrderItem(p.getProductName(),inputamout,"Saved",output,p.getPicture(),p.getPrice(),account);
+                    newbundleorder.save();
+
+                    neworder = new CartDB(newbundleorder,p,inputamout,size,date);
+                    neworder.save();
+                }
+                else{
+                    //for(int i=0;i<=check.size();i++)
+                    check.setSubtotal(output);
+                    check.setTotalquantity(inputamout);
+                    check.save();
+                       // System.out.println(i);
+                    neworder = new CartDB(check,p,inputamout,size,date);
+                    neworder.save();
+
+                }
+
 
                 Toast.makeText(getContext(),"Added to Cart",Toast.LENGTH_SHORT).show();
 
@@ -162,6 +182,23 @@ public class ItemDescriptionFragment extends Fragment {
         });
 
         return v;
+    }
+
+    private OrderItem checkorder(String productName) {
+        int x = OrderItem.listAll(OrderItem.class).size();
+        if(x>0) {
+            try {
+                OrderItem odb = OrderItem.find(OrderItem.class, "itemname = ? and status = ?", productName, "Saved").get(0);
+                if (odb != null) {
+                    return odb;
+                }
+                return null;
+            }
+            catch (IndexOutOfBoundsException ex){
+                return null;
+            }
+        }
+        return null;
     }
 
     private void shareproduct(){
