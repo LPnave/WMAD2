@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
+import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.R;
 
 public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerViewAdapter.cartViewHolder> {
@@ -102,6 +103,10 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 int j = cartViewHolder.getAdapterPosition();
+                                OrderItem deletingorder = OrderItem.findById(OrderItem.class,orderid);
+                                Products products = OrderItem.find(Products.class,"product_name = ?", deletingorder.getItemname()).get(0);
+                                products.setStock(products.getStock()+deletingorder.getTotalquantity());
+                                products.save();
                                 OrderItem.deleteAll(OrderItem.class,"id=?",Long.toString(orderid));
 
                                 orderlist.remove(j);
