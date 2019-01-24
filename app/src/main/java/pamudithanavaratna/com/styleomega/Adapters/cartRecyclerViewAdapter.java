@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import pamudithanavaratna.com.styleomega.Database.CartDB;
 import pamudithanavaratna.com.styleomega.Database.OrderItem;
 import pamudithanavaratna.com.styleomega.Database.Products;
 import pamudithanavaratna.com.styleomega.R;
@@ -107,6 +108,7 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
                                 Products products = OrderItem.find(Products.class,"product_name = ?", deletingorder.getItemname()).get(0);
                                 products.setStock(products.getStock()+deletingorder.getTotalquantity());
                                 products.save();
+                                CartDB.deleteAll(CartDB.class,"oi = ?",deletingorder.getId().toString());
                                 OrderItem.deleteAll(OrderItem.class,"id=?",Long.toString(orderid));
 
                                 orderlist.remove(j);

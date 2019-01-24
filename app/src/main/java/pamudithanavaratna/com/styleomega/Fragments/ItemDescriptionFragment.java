@@ -141,12 +141,12 @@ public class ItemDescriptionFragment extends Fragment {
                 p.save();
 
                 OrderItem check= checkorder(p.getProductName());
-                CartDB neworder;
+
                 if(check== null){
                     OrderItem newbundleorder = new OrderItem(p.getProductName(),inputamout,"Saved",output,p.getPicture(),p.getPrice(),account);
                     newbundleorder.save();
 
-                    neworder = new CartDB(newbundleorder,p,inputamout,size,date);
+                    CartDB neworder = new CartDB(newbundleorder,p,inputamout,size,date);
                     neworder.save();
                 }
                 else{
@@ -155,8 +155,9 @@ public class ItemDescriptionFragment extends Fragment {
                     check.setTotalquantity(inputamout);
                     check.save();
                        // System.out.println(i);
-                    neworder = new CartDB(check,p,inputamout,size,date);
-                    neworder.save();
+                    CartDB update = CartDB.find(CartDB.class,"oi = ?",check.getId().toString()).get(0);
+                    update.setQuantity(inputamout);
+                    update.save();
 
                 }
 
@@ -185,20 +186,17 @@ public class ItemDescriptionFragment extends Fragment {
     }
 
     private OrderItem checkorder(String productName) {
-        int x = OrderItem.listAll(OrderItem.class).size();
-        if(x>0) {
+        //int x = OrderItem.listAll(OrderItem.class).size();
+        //if(x>0) {
             try {
-                OrderItem odb = OrderItem.find(OrderItem.class, "itemname = ? and status = ?", productName, "Saved").get(0);
-                if (odb != null) {
-                    return odb;
-                }
-                return null;
+                List<OrderItem> odb = OrderItem.find(OrderItem.class, "itemname = ? and status = ?", productName, "Saved");
+                return odb.get(0);
             }
             catch (IndexOutOfBoundsException ex){
                 return null;
             }
-        }
-        return null;
+       // }
+        //return null;
     }
 
     private void shareproduct(){

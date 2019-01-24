@@ -208,10 +208,6 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         } else if (id == R.id.about_us) {
             startActivity( new Intent(MainPage.this,About_Us.class));
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
