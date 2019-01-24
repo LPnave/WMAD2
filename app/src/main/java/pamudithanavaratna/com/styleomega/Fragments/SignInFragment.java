@@ -32,7 +32,7 @@ public class SignInFragment extends Fragment {
 
     //private SharedPreferences preferences;
     //private SharedPreferences.Editor editor;
-    private CustomSharedPreference preference = new CustomSharedPreference();
+    private CustomSharedPreference preference;
 
     public SignInFragment() {
         // Required empty public constructor
@@ -41,7 +41,7 @@ public class SignInFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        preference = CustomSharedPreference.getInstance();
 
     }
 

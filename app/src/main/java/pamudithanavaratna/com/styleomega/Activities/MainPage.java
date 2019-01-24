@@ -46,7 +46,7 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-
+        preference = CustomSharedPreference.getInstance();
 
 
         if(resultlist!=null){

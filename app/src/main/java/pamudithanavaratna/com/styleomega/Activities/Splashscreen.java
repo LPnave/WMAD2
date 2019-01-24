@@ -33,7 +33,7 @@ public class Splashscreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        preference = CustomSharedPreference.getInstance();
        //preferences = getSharedPreferences("user",MODE_PRIVATE);
        // boolean loginstatus = preferences.getBoolean("loginstatus", false);
         boolean loginstatus = preference.getABool(getApplicationContext(),"loginstatus");

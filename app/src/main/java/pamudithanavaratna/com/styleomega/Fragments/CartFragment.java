@@ -39,7 +39,7 @@ public class CartFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        preference = CustomSharedPreference.getInstance();
         orderlist= new ArrayList<>();
 
         //preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);

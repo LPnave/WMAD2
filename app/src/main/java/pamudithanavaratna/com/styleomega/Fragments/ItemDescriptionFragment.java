@@ -52,7 +52,7 @@ public class ItemDescriptionFragment extends Fragment {
     String size;
 
     //private SharedPreferences preferences;
-    private CustomSharedPreference preference = new CustomSharedPreference();
+    private CustomSharedPreference preference;// = new CustomSharedPreference();
 
     public ItemDescriptionFragment() {
         // Required empty public constructor
@@ -63,7 +63,7 @@ public class ItemDescriptionFragment extends Fragment {
         super.onCreate(savedInstanceState);
          id = getArguments().getLong("itemID");
          p = Products.findById(Products.class,id);
-
+        preference = CustomSharedPreference.getInstance();
 
     }
 

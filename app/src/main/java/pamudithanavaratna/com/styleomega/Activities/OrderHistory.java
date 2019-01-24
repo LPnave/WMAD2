@@ -28,11 +28,9 @@ public class OrderHistory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_history);
-
+        preference = CustomSharedPreference.getInstance();
         historylist= new ArrayList<>();
 
-        //preferences = getSharedPreferences("user",Context.MODE_PRIVATE);
-        //long userid = preferences.getLong("userid",0);
         long userid = preference.getALong(getApplicationContext(),"userid");
 
         User loggeduser = User.findById(User.class,userid);

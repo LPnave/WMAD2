@@ -123,7 +123,6 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
                             }
                         }).show();
 
-
             }
         });
 

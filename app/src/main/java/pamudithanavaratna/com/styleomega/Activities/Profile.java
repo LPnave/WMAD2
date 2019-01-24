@@ -28,6 +28,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        preference = CustomSharedPreference.getInstance();
 
         //preferences = getSharedPreferences("user", MODE_PRIVATE);
        // long userid = preferences.getLong("userid",0);
