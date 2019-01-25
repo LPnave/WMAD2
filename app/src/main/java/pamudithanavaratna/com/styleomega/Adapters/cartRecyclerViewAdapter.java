@@ -28,7 +28,6 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
     private ArrayList<OrderItem> orderlist;
     private Context context;
 
-
     public cartRecyclerViewAdapter(ArrayList<OrderItem> orderlist, Context context) {
         this.orderlist = orderlist;
         this.context = context;
@@ -88,8 +87,6 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
 
                             }
                         }).show();
-
-
             }
         });
 
@@ -122,11 +119,8 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
 
                             }
                         }).show();
-
             }
         });
-
-
     }
 
     @Override
@@ -156,7 +150,6 @@ public class cartRecyclerViewAdapter extends RecyclerView.Adapter<cartRecyclerVi
             relativeLayout = cartview.findViewById(R.id.recyclecartRelativeLayout);
             paybtn = cartview.findViewById(R.id.paybtn);
             Deletebtn = cartview.findViewById(R.id.deletebtn);
-
 
         }
     }

@@ -19,7 +19,6 @@ import pamudithanavaratna.com.styleomega.R;
 
 public class Profile extends AppCompatActivity {
 
-    //private SharedPreferences preferences;
     private CustomSharedPreference preference;
 
     Button savebutton;
@@ -30,8 +29,6 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         preference = CustomSharedPreference.getInstance();
 
-        //preferences = getSharedPreferences("user", MODE_PRIVATE);
-       // long userid = preferences.getLong("userid",0);
         long userid = preference.getALong(getApplicationContext(),"userid");
 
         final User currentuser = User.findById(User.class,userid);

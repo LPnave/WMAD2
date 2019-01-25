@@ -37,8 +37,6 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
     Bundle bundle = new Bundle();
     private static ArrayList<String> resultlist= new ArrayList<>();
 
-    //private SharedPreferences preferences;
-    //private SharedPreferences.Editor editor;
     private CustomSharedPreference preference;
 
 
@@ -69,8 +67,6 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        //preferences = getSharedPreferences("user", MODE_PRIVATE);
 
         long userid = preference.getALong(getApplicationContext(),"userid");
 
@@ -137,10 +133,7 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
                 }
             }
         }
-
         bundle.putStringArrayList("resultlist", resultlist);
-
-
     }
 
 
@@ -175,14 +168,7 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         cartintent.putExtras(bundle);
         startActivity(cartintent);
 
-        Toast.makeText(this,"Loading cart",Toast.LENGTH_SHORT);
-       /* int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }*/
-
+        Toast.makeText(this,"Loading cart",Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
 
@@ -195,10 +181,6 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         if (id == R.id.nav_profile) {
             startActivity( new Intent( MainPage.this,Profile.class));
         } else if (id == R.id.logout) {
-            //preference = getSharedPreferences("user",MODE_PRIVATE);
-            //editor = preferences.edit();
-            //editor.putBoolean("loginstatus", false);
-            //editor.commit();
             preference.putABool(getApplicationContext(),"loginstatus", false);
             startActivity(new Intent(MainPage.this, Sign_In.class));
             finish();
@@ -214,8 +196,5 @@ public class  MainPage extends AppCompatActivity implements NavigationView.OnNav
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-
 }
 

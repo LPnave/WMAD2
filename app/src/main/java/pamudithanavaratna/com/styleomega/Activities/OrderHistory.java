@@ -21,7 +21,7 @@ public class OrderHistory extends AppCompatActivity {
     private RecyclerView historyrecycleview;
     private HistoryAdapter historyAdapter;
 
-    //private SharedPreferences preferences;
+
     private CustomSharedPreference preference;
 
     @Override

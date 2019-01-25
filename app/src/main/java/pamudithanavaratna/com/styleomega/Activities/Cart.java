@@ -13,14 +13,6 @@ public class Cart extends AppCompatActivity {
 
     User loggedin;
 
-    public User getLoggedin() {
-        return loggedin;
-    }
-
-    public void setLoggedin(User loggedin) {
-        this.loggedin = loggedin;
-    }
-
     public static FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +34,5 @@ public class Cart extends AppCompatActivity {
 
     }
 
-
-
-/*
-    public void OnClickPay (View v){
-
-        fragmentManager.beginTransaction().replace(R.id.cartFragmentContainer,
-                new PayFragment(),null).addToBackStack("cart").commit();
-    }*/
 
 }

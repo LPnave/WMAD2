@@ -25,7 +25,6 @@ import pamudithanavaratna.com.styleomega.Database.User;
 
 public class Splashscreen extends AppCompatActivity {
 
-    //private SharedPreferences preferences;
     private CustomSharedPreference preference;
 
     private ArrayList<Products> productsarray = new ArrayList<>();
@@ -34,10 +33,8 @@ public class Splashscreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preference = CustomSharedPreference.getInstance();
-       //preferences = getSharedPreferences("user",MODE_PRIVATE);
-       // boolean loginstatus = preferences.getBoolean("loginstatus", false);
-        boolean loginstatus = preference.getABool(getApplicationContext(),"loginstatus");
 
+        boolean loginstatus = preference.getABool(getApplicationContext(),"loginstatus");
 
         List<Products> plistcheck= Products.listAll(Products.class);
 
@@ -79,13 +76,9 @@ public class Splashscreen extends AppCompatActivity {
                     for (Products p : productsarray) {
                         p.save();
                     }
-
                 }
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
-
             }
         }
 
@@ -111,12 +104,10 @@ public class Splashscreen extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
             }
 
             startActivity(new Intent(Splashscreen.this, Sign_In.class));
             finish();
-
         }
         else{
             startActivity(new Intent(Splashscreen.this,MainPage.class));
