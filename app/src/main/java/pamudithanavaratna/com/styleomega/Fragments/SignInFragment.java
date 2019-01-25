@@ -66,8 +66,8 @@ public class SignInFragment extends Fragment {
                 String passwordcheck = password.getText().toString();
 
                 try {
-                    if(emailcheck!=null && passwordcheck!=null) {
-                        // List<Login> userlog = Login.find(Login.class, "useremail=?",emailcheck);
+                    if(!emailcheck.equals("") && !passwordcheck.equals("")) {
+
                         List<User> userlog = User.listAll(User.class);
                         for (User u : userlog) {
                             if (u.getEmail().equals(emailcheck) && u.getPassword().equals(passwordcheck)) {
@@ -76,24 +76,7 @@ public class SignInFragment extends Fragment {
                                 preference.putALong(getContext(),"userid",u.getId());
                                 preference.putABool(getContext(),"loginstatus",true);
 
-                                //preferences = getContext().getSharedPreferences("user",Context.MODE_PRIVATE);
-                                //editor = preferences.edit();
-
-                               // editor.putLong("userid",u.getId());
-                               // editor.putBoolean("loginstatus",true);
-                               // editor.commit();
-
-
-                                /*String name = u.getFname()+" "+u.getLname();
-                                Bundle bundle = new Bundle();
-                                bundle.putString("useremail",emailcheck);
-                                bundle.putString("username",name);
-                                //bundle.putSerializable("loggeduser",u);*/
-
                                 Intent movingtomain= new Intent(getActivity(), MainPage.class);
-                               // movingtomain.putExtra("loggeduser",u);
-                                //movingtomain.putExtras(bundle);
-
 
                                 startActivity(movingtomain);
                                 getActivity().finish();
@@ -101,14 +84,12 @@ public class SignInFragment extends Fragment {
                             } else {
                                 Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
                             }
-
                         }
                     }else
                     {
-                        Toast.makeText(getContext(),"Fill all feilds",Toast.LENGTH_SHORT);
+                        Toast.makeText(getContext(),"Fill all feilds",Toast.LENGTH_SHORT).show();
                     }
-
-                }
+               }
                 catch (Exception e){
                     Log.i("exception ", e.getMessage());
 
