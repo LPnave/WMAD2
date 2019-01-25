@@ -6,10 +6,10 @@ import java.util.Date;
 
 public class PaymentDetails extends SugarRecord<PaymentDetails> {
 
-    String cardnumber;
-    int vsc;
-    Date ExpiriyDate;
-    User user;
+    private String cardnumber;
+    private int vsc;
+    private Date ExpiriyDate;
+    private User user;
 
     public PaymentDetails() {
 

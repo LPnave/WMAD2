@@ -4,8 +4,8 @@ import com.orm.SugarRecord;
 
 public class Login extends SugarRecord<Login> {
 
-    String useremail;
-    String password;
+    private String useremail;
+    private String password;
 
     public Login() {
 

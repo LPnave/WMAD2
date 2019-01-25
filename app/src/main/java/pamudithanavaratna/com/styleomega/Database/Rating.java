@@ -4,9 +4,9 @@ import com.orm.SugarRecord;
 
 public class Rating extends SugarRecord {
 
-    Products products;
-    int Rating;
-    int numberOfTimesRated;
+    private Products products;
+    private int Rating;
+    private int numberOfTimesRated;
 
     public Rating() {
 

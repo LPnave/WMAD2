@@ -6,11 +6,11 @@ import java.util.Date;
 
 public class CartDB extends SugarRecord<CartDB> {
 
-    OrderItem oi ;
-    Products p;
-    int quantity;
-    String size;
-    String date;
+    private OrderItem oi ;
+    private  Products p;
+    private  int quantity;
+    private  String size;
+    private  String date;
 
 
     public CartDB() {

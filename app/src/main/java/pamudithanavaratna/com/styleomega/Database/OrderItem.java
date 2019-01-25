@@ -6,13 +6,13 @@ import java.util.Date;
 
 public class OrderItem extends SugarRecord<OrderItem> {
 
-    String itemname;
-    int totalquantity;
-    String status;
-    String subtotal;
-    String image;
-    String price;
-    User user;
+    private String itemname;
+    private int totalquantity;
+    private String status;
+    private String subtotal;
+    private String image;
+    private String price;
+    private User user;
 
     public OrderItem() {
     }

@@ -5,13 +5,13 @@ import com.orm.SugarRecord;
 import java.sql.Blob;
 
 public class Products extends SugarRecord<Products> {
-    int productId;
-    int stock;
-    String productName;
-    String category;
-    String price;
-    String picture;
-    String gender;
+    private int productId;
+    private int stock;
+    private String productName;
+    private String category;
+    private String price;
+    private String picture;
+    private String gender;
 
     public Products() {
     }

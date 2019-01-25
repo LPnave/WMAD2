@@ -6,13 +6,13 @@ import java.io.Serializable;
 
 public class ShippingDetails extends SugarRecord<ShippingDetails> implements Serializable {
 
-    String address;
-    String lane;
-    String city;
-    String province;
-    int postalcode;
+    private String address;
+    private String lane;
+    private String city;
+    private String province;
+    private int postalcode;
 
-    User user;
+    private User user;
 
     public ShippingDetails() {
 
