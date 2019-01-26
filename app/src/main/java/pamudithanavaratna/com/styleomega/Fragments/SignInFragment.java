@@ -30,8 +30,6 @@ public class SignInFragment extends Fragment {
      Button SignInBtn;
      Button RegisterBtn;
 
-    //private SharedPreferences preferences;
-    //private SharedPreferences.Editor editor;
     private CustomSharedPreference preference;
 
     public SignInFragment() {
@@ -42,7 +40,6 @@ public class SignInFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preference = CustomSharedPreference.getInstance();
-
     }
 
     @Override
@@ -54,9 +51,6 @@ public class SignInFragment extends Fragment {
         final EditText email = v.findViewById(R.id.emailSignIn);
         final EditText password = v.findViewById(R.id.passwordSignIn);
 
-
-
-        //Sign in Button
         SignInBtn = (Button) v.findViewById(R.id.SignInBtn);
         SignInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +66,6 @@ public class SignInFragment extends Fragment {
                         for (User u : userlog) {
                             if (u.getEmail().equals(emailcheck) && u.getPassword().equals(passwordcheck)) {
 
-
                                 preference.putALong(getContext(),"userid",u.getId());
                                 preference.putABool(getContext(),"loginstatus",true);
 
@@ -80,11 +73,9 @@ public class SignInFragment extends Fragment {
 
                                 startActivity(movingtomain);
                                 getActivity().finish();
-
-                            } else {
-                                Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
                             }
                         }
+                        //Toast.makeText(getContext(), "Login failed", Toast.LENGTH_SHORT).show();
                     }else
                     {
                         Toast.makeText(getContext(),"Fill all feilds",Toast.LENGTH_SHORT).show();
@@ -92,25 +83,10 @@ public class SignInFragment extends Fragment {
                }
                 catch (Exception e){
                     Log.i("exception ", e.getMessage());
-
                 }
-//test line
-               /* List<User> userList = User.findWithQuery(User.class, "Select * from User where email="+ emailcheck + " and password="+ passwordcheck);
-
-                if(userList!=null) {
-
-                    startActivity(new Intent(getActivity(), MainPage.class));
-                    getActivity().finish();
-                }
-                else{
-
-                    Toast.makeText(getContext(),"Login failed",Toast.LENGTH_SHORT).show();
-                }*/
             }
         });
 
-
-        //Register Button
         RegisterBtn = (Button) v.findViewById(R.id.RegisterBtn);
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,9 +96,6 @@ public class SignInFragment extends Fragment {
             }
         });
         return v;
-
     }
-
-
 
 }

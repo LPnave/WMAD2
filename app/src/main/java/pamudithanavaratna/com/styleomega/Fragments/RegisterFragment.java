@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.Serializable;
 
@@ -28,7 +29,6 @@ public class RegisterFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,27 +45,36 @@ public class RegisterFragment extends Fragment {
         registerNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //Intent intent = new Intent(getActivity(),MainPage.class);
+                boolean checkresult = false;
+                try {
+                    User check = User.find(User.class, "email=?", email.getText().toString()).get(0);
+                    if(check!=null) {
+                        checkresult=true;
+                    }
+                }catch(IndexOutOfBoundsException e){
+                    checkresult = false;
+                }
+                if(!checkresult) {
+                    User user = new User(email.getText().toString(), firstname.getText().toString(),
+                            lastname.getText().toString(),
+                            mobilenumber.getText().toString(), password.getText().toString());
 
-                User user = new User(email.getText().toString(),firstname.getText().toString(),lastname.getText().toString(),
-                         mobilenumber.getText().toString(),password.getText().toString());
+                    user.save();
 
-                user.save();
+                    Login userlogin = new Login(email.getText().toString(), password.getText().toString());
+                    userlogin.save();
 
-                Login userlogin = new Login(email.getText().toString(), password.getText().toString());
-                userlogin.save();
+                    Bundle userbundle = new Bundle();
+                    userbundle.putSerializable("newuser", user);
 
-                Bundle userbundle = new Bundle();
-                userbundle.putSerializable("newuser", user);
+                    AddressFragment AF = new AddressFragment();
+                    AF.setArguments(userbundle);
 
-                AddressFragment AF = new AddressFragment();
-                AF.setArguments(userbundle);
-
-                Sign_In.fragmentManager.beginTransaction().replace(R.id.SignInFragmentContainer,
-                        AF,null).addToBackStack("tag2").commit();
-                //startActivity(new Intent(getActivity(),MainPage.class));
-                //getActivity().finish();
-
+                    Sign_In.fragmentManager.beginTransaction().replace(R.id.SignInFragmentContainer,
+                            AF, null).addToBackStack("tag2").commit();
+                }else{
+                    Toast.makeText(getContext(),"You already have an account",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return v;

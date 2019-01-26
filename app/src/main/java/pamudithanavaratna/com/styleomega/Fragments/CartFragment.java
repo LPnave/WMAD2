@@ -42,21 +42,17 @@ public class CartFragment extends Fragment {
         preference = CustomSharedPreference.getInstance();
         orderlist= new ArrayList<>();
 
-        //preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
-        //long userid = preferences.getLong("userid",0);
         long userid = preference.getALong(getContext(),"userid");
 
         User loggeduser = User.findById(User.class,userid);
 
         List<OrderItem>ol=OrderItem.listAll(OrderItem.class);
-        if(ol!=null) {
+        if(ol.size()>0) {
             for (OrderItem o : ol) {
                 //User user = o.getUser();
                 if (o.getUser().getEmail().equals(loggeduser.getEmail())&& o.getStatus().equalsIgnoreCase("Saved")) {
                     orderlist.add(o);
-
                 }
-
             }
         }else{
             Toast.makeText(getContext(),"Cart empty",Toast.LENGTH_SHORT).show();
@@ -75,8 +71,6 @@ public class CartFragment extends Fragment {
 
         cartRecyclerViewAdapter = new cartRecyclerViewAdapter(orderlist,getContext());
         cartrecycleview.setAdapter(cartRecyclerViewAdapter);
-
-
 
         return v;
     }

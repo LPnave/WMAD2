@@ -22,7 +22,6 @@ public class tab1 extends Fragment {
 
     GridView gview;
     Bundle bundle;
-    //String gender="Women";
     String[] categories ={"Tops", "Bottoms", "Accessories", "Footwear", "Partywear", "Coats & Jackets"};
 
     int[] images ={
@@ -34,7 +33,6 @@ public class tab1 extends Fragment {
             R.drawable.wcoat
     };
 
-
     public tab1() {
         // Required empty public constructor
     }
@@ -43,13 +41,12 @@ public class tab1 extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    View v;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-         v= inflater.inflate(R.layout.fragment_tab1, container, false);
+        View v= inflater.inflate(R.layout.fragment_tab1, container, false);
 
         gview = (GridView) v.findViewById(R.id.gridview);
         final GridAdapter gridAdapter = new GridAdapter(getActivity(),categories,images);
@@ -74,10 +71,8 @@ public class tab1 extends Fragment {
                         IPF, null).addToBackStack("mainPageW").commit();
             }
         });
-
         return v;
     }
-
 
 }
 

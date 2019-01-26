@@ -25,10 +25,8 @@ public class ItemRecyclerViewAdapter extends RecyclerView.Adapter<ItemRecyclerVi
 
     private static final String TAG="Recycler view";
 
-
     private List<Products> productlist;
     private Context context;
-
 
     public ItemRecyclerViewAdapter(List<Products> products, Context context) {
         this.productlist = products;

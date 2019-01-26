@@ -15,6 +15,7 @@ import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
 import pamudithanavaratna.com.styleomega.Activities.MainPage;
+import pamudithanavaratna.com.styleomega.Adapters.CustomSharedPreference;
 import pamudithanavaratna.com.styleomega.Database.PaymentDetails;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
@@ -26,11 +27,11 @@ import pamudithanavaratna.com.styleomega.R;
 public class PaymentDetailsFragment extends Fragment {
 
     private Button completeReg;
+    private CustomSharedPreference preference;
 
     public PaymentDetailsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,9 +43,11 @@ public class PaymentDetailsFragment extends Fragment {
         final EditText vsc = v.findViewById(R.id.editTextVSC);
         final EditText exDate = v.findViewById(R.id.editTextExpDate);
 
-        Bundle bundle = new Bundle();
-        //final User user = (User) bundle.getSerializable("newuser");
         final User user = (User) getArguments().getSerializable("newuser");
+
+        preference =CustomSharedPreference.getInstance();
+        preference.putALong(getContext(),"userid",user.getId());
+        preference.putABool(getContext(),"loginstatus", true);
 
         completeReg= v.findViewById(R.id.buttonCompleteRegstration);
         completeReg.setOnClickListener(new View.OnClickListener() {

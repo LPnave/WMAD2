@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import pamudithanavaratna.com.styleomega.Database.PaymentDetails;
 import pamudithanavaratna.com.styleomega.Database.ShippingDetails;
 import pamudithanavaratna.com.styleomega.Database.User;
 import pamudithanavaratna.com.styleomega.R;
@@ -39,7 +40,7 @@ public class AddressFragment extends Fragment {
         final EditText province = v.findViewById(R.id.editTextProvince);
         final EditText postalcode = v.findViewById(R.id.editTextPostalCode);
 
-        Bundle bundle = new Bundle();
+        final Bundle bundle = new Bundle();
         final User user = (User) getArguments().getSerializable("newuser");
 
 
@@ -48,11 +49,16 @@ public class AddressFragment extends Fragment {
              @Override
              public void onClick(View view) {
 
+
                  ShippingDetails sd = new ShippingDetails(address.getText().toString(), streetname.getText().toString(),
                          district.getText().toString(),province.getText().toString(),Integer.parseInt(postalcode.getText().toString()),user);
+                    sd.save();
+                    bundle.putSerializable("newuser",user);
+                 PaymentDetailsFragment pdf = new PaymentDetailsFragment();
+                 pdf.setArguments(bundle);
 
                  Sign_In.fragmentManager.beginTransaction().replace(R.id.SignInFragmentContainer,
-                         new PaymentDetailsFragment(),null).addToBackStack("tag3").commit();
+                         pdf,null).addToBackStack("tag3").commit();
              }
          }
 

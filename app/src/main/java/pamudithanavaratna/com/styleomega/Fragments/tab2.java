@@ -37,8 +37,6 @@ public class tab2 extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,8 +46,6 @@ public class tab2 extends Fragment {
         gview = (GridView) v.findViewById(R.id.gridview);
         final GridAdapter gridAdapter = new GridAdapter(getActivity(),categories,images);
         gview.setAdapter(gridAdapter);
-
-
 
         gview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

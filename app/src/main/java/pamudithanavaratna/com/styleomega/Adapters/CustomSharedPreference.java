@@ -5,9 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class CustomSharedPreference {
-    //private static Context context;
-    private static CustomSharedPreference instance;
 
+    private static CustomSharedPreference instance;
 
     private CustomSharedPreference() {
     }

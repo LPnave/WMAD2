@@ -30,17 +30,12 @@ import pamudithanavaratna.com.styleomega.R;
  */
 public class MainFragment extends Fragment {
 
-
-
     private SectionsPageAdapter sectionsPageAdapter;
     private ViewPager viewPager;
 
     public MainFragment() {
         // Required empty public constructor
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,14 +44,11 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main,container,false);
 
         sectionsPageAdapter = new SectionsPageAdapter(getChildFragmentManager());
-        //sectionsPageAdapter = new SectionsPageAdapter(getActivity().getSupportFragmentManager());
         viewPager = (ViewPager)v.findViewById(R.id.pager);
         setupViewPager(viewPager);
 
         TabLayout tabLayout = v.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-
 
         return v;
     }
@@ -67,7 +59,6 @@ public class MainFragment extends Fragment {
         sectionsPageAdapter.addFragment(new tab1(),"Women");
         sectionsPageAdapter.addFragment(new tab2(),"Men");
         viewPager.setAdapter(sectionsPageAdapter);
-
     }
 
     public static class SectionsPageAdapter extends FragmentPagerAdapter {
@@ -102,8 +93,6 @@ public class MainFragment extends Fragment {
         public int getCount() {
             return fragmentList.size();
         }
-
-
 
     }
 

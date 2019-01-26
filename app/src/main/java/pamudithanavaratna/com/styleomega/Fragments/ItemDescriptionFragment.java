@@ -37,8 +37,6 @@ import pamudithanavaratna.com.styleomega.R;
  */
 public class ItemDescriptionFragment extends Fragment {
 
-
-
     long id;
 
     Button addtocart;
@@ -51,7 +49,6 @@ public class ItemDescriptionFragment extends Fragment {
     String output;
     String size;
 
-    //private SharedPreferences preferences;
     private CustomSharedPreference preference;// = new CustomSharedPreference();
 
     public ItemDescriptionFragment() {
@@ -64,7 +61,6 @@ public class ItemDescriptionFragment extends Fragment {
          id = getArguments().getLong("itemID");
          p = Products.findById(Products.class,id);
         preference = CustomSharedPreference.getInstance();
-
     }
 
 
@@ -73,7 +69,8 @@ public class ItemDescriptionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v =  inflater.inflate(R.layout.fragment_item_description, container, false);
+        View v =  inflater.inflate(R.layout.fragment_item_description, container,
+                false);
 
         TextView nametext = v.findViewById(R.id.itemname);
         TextView pricetext = v.findViewById(R.id.priceTextView);
@@ -83,7 +80,6 @@ public class ItemDescriptionFragment extends Fragment {
         final EditText amount = v.findViewById(R.id.noofitemsinput);
          addtocart= v.findViewById(R.id.AddtoCartButton);
         Spinner sizespinner = v.findViewById(R.id.sizespinner);
-
 
         Picasso.get().load(p.getPicture()).into(imagedes);
 
@@ -110,7 +106,8 @@ public class ItemDescriptionFragment extends Fragment {
                 try{
                     inputamout = Integer.parseInt(charSequence.toString());
                 }catch(NumberFormatException ex){
-                    Toast.makeText(getContext(),"Please enter a value",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Please enter a value",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -130,8 +127,6 @@ public class ItemDescriptionFragment extends Fragment {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 String date = simpleDateFormat.format(calendar.getTime());
 
-                //preferences = getActivity().getSharedPreferences("user",Context.MODE_PRIVATE);
-                //long id = preferences.getLong("userid",0);
                 long id = preference.getALong(getContext(),"userid");
 
                 account = User.findById(User.class,id);
@@ -143,24 +138,22 @@ public class ItemDescriptionFragment extends Fragment {
                 OrderItem check= checkorder(p.getProductName());
 
                 if(check== null){
-                    OrderItem newbundleorder = new OrderItem(p.getProductName(),inputamout,"Saved",output,p.getPicture(),p.getPrice(),account);
+                    OrderItem newbundleorder = new OrderItem(p.getProductName(),inputamout,
+                            "Saved",output,p.getPicture(),p.getPrice(),account);
                     newbundleorder.save();
 
                     CartDB neworder = new CartDB(newbundleorder,p,inputamout,size,date);
                     neworder.save();
                 }
                 else{
-                    //for(int i=0;i<=check.size();i++)
                     check.setSubtotal(output);
                     check.setTotalquantity(inputamout);
                     check.save();
-                       // System.out.println(i);
-                    CartDB update = CartDB.find(CartDB.class,"oi = ?",check.getId().toString()).get(0);
+                    CartDB update = CartDB.find(CartDB.class,
+                            "oi = ?",check.getId().toString()).get(0);
                     update.setQuantity(inputamout);
                     update.save();
-
                 }
-
 
                 Toast.makeText(getContext(),"Added to Cart",Toast.LENGTH_SHORT).show();
 
@@ -173,7 +166,6 @@ public class ItemDescriptionFragment extends Fragment {
                         .commit();
             }
         });
-
         sharingbutton = v.findViewById(R.id.sharebutton);
         sharingbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,8 +178,6 @@ public class ItemDescriptionFragment extends Fragment {
     }
 
     private OrderItem checkorder(String productName) {
-        //int x = OrderItem.listAll(OrderItem.class).size();
-        //if(x>0) {
             try {
                 List<OrderItem> odb = OrderItem.find(OrderItem.class, "itemname = ? and status = ?", productName, "Saved");
                 return odb.get(0);
@@ -195,12 +185,10 @@ public class ItemDescriptionFragment extends Fragment {
             catch (IndexOutOfBoundsException ex){
                 return null;
             }
-       // }
-        //return null;
     }
 
     private void shareproduct(){
-        String s = "visit style omega for your shopping pleasures";
+        String s = "buy the " + p.getProductName() + "today, visit style omega for your shopping pleasures";
         Intent shareintent = new Intent(android.content.Intent.ACTION_SEND);
         shareintent.setType("text/plain");
         shareintent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
