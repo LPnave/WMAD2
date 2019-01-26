@@ -188,7 +188,7 @@ public class ItemDescriptionFragment extends Fragment {
     }
 
     private void shareproduct(){
-        String s = "buy the " + p.getProductName() + "today, visit style omega for your shopping pleasures";
+        String s = "buy the " + p.getProductName() + " today, visit style omega for your shopping pleasures";
         Intent shareintent = new Intent(android.content.Intent.ACTION_SEND);
         shareintent.setType("text/plain");
         shareintent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
